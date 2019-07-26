@@ -1,0 +1,572 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Novo-Map\n"
+"POT-Creation-Date: 2018-02-24 18:02+0100\n"
+"PO-Revision-Date: 2018-02-24 18:05+0100\n"
+"Last-Translator: Gpsman.bzh <contact@drnradio.net>\n"
+"Language-Team: Gpsman.bzh <contact@drnradio.net>\n"
+"Language: fr\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"X-Generator: Poedit 2.0.4\n"
+"X-Poedit-Basepath: ..\n"
+"X-Poedit-Flags-xgettext: --add-comments=translators:\n"
+"X-Poedit-WPHeader: novo-map.php\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"X-Poedit-KeywordsList: __;_e;_n:1,2;_x:1,2c;_ex:1,2c;_nx:4c,1,2;esc_attr__;"
+"esc_attr_e;esc_attr_x:1,2c;esc_html__;esc_html_e;esc_html_x:1,2c;_n_noop:1,2;"
+"_nx_noop:3c,1,2;__ngettext_noop:1,2\n"
+"X-Poedit-SearchPath-0: .\n"
+"X-Poedit-SearchPathExcluded-0: *.js\n"
+
+#: admin/class-novo-map-admin.php:89
+msgid "Are you sure ?"
+msgstr "Êtes-vous sûr(e) ?"
+
+#: admin/class-novo-map-admin.php:122
+msgid "Settings"
+msgstr "Paramètres"
+
+#: admin/class-novo-map-admin.php:258
+msgid "Markers menu"
+msgstr "Menu des marqueurs"
+
+#: admin/class-novo-map-admin.php:259
+msgid "Markers"
+msgstr "Marqueurs"
+
+#: admin/class-novo-map-admin.php:386
+msgid "Novo Map"
+msgstr "Novo Map"
+
+#: admin/class-novo-map-admin.php:487
+msgid "The Post must be published to add a Marker"
+msgstr "Le post doit être publié pour ajouter un marqueur"
+
+#: admin/helpers/admin-helpers.php:28
+msgid ""
+"<div class=\"notice notice-error is-dismissible\"><p>your nonce is not "
+"correct.</p></div>"
+msgstr ""
+"<div class=\"notice notice-error is-dismissible\"><p>votre nonce n'est pas "
+"correct.</p></div>"
+
+#: admin/helpers/admin-helpers.php:34
+msgid ""
+"<div class=\"notice notice-warning is-dismissible\"><p>Autosave: the form "
+"has not been submitted</p></div>"
+msgstr ""
+"<div class=\"notice notice-error is-dismissible\"><p>Autosave: le formulaire "
+"n'a pas été envoyé</p></div>"
+
+#: admin/helpers/admin-helpers.php:54
+msgid ""
+"<div class=\"notice notice-error is-dismissible\"><p>User not allowed to "
+"edit this page.</p></div>"
+msgstr ""
+"<div class=\"notice notice-error is-dismissible\"><p>L'utilisateur n'est pas "
+"autorisé à modifier cette page.</p></div>"
+
+#: admin/helpers/admin-helpers.php:63
+msgid ""
+"<div class=\"notice notice-error is-dismissible\"><p>User not allowed to "
+"edit this post.</p></div>"
+msgstr ""
+"<div class=\"notice notice-error is-dismissible\"><p>L'utilisateur n'est pas "
+"autorisé à modifier ce post.</p></div>"
+
+#: admin/helpers/admin-helpers.php:71
+msgid ""
+"<div class=\"notice notice-error is-dismissible\"><p>This is no Post or Page."
+"</p></div>"
+msgstr ""
+"<div class=\"notice notice-error is-dismissible\"><p>Ce n'est pas un article "
+"ou une page.</p></div>"
+
+#: admin/partials/main-admin-menu.php:6
+#: admin/partials/marker-logo-admin-menu.php:17
+#: admin/partials/post-admin-menu.php:6
+msgid "Default Markers"
+msgstr "Marqueurs par défaut"
+
+#: admin/partials/main-admin-menu.php:14 admin/partials/post-admin-menu.php:14
+msgid "User defined Markers"
+msgstr "Marqueurs définis par l'utilisateur"
+
+#: admin/partials/main-admin-menu.php:28
+msgid ""
+"If you enjoy the plugin, we would really appreciate if you could <a href="
+"\"https://wordpress.org/support/plugin/novo-map/reviews/\" target=\"_blank"
+"\">drop us a review</a> or support us with <a href=\"https://www.paypal.me/"
+"novomedia\" target=\"_blank\">a donation</a>"
+msgstr ""
+"Si vous appréciez le plugin, nous apprécierions vraiment si vous pouviez "
+"nous <a href=\"https://wordpress.org/support/plugin/novo-map/reviews/\" "
+"target=\"_blank\">envoyer un avis</a> ou nous soutenir avec <a href="
+"\"https://www.paypal.me/novomedia\" target=\"_blank\">un don</a>"
+
+#: admin/partials/main-admin-menu.php:29
+msgid ""
+"If you find a bug or have any suggestion, create a <a href=\"https://"
+"wordpress.org/support/plugin/novo-map\" target=\"_blank\">new topic in the "
+"plugin support</a>"
+msgstr ""
+"Si vous trouvez un bug ou avez une suggestion, créez un <a href=\"https://"
+"wordpress.org/support/plugin/novo-map\" target=\"_blank\">nouveau sujet dans "
+"le support du plugin</a>"
+
+#: admin/partials/main-admin-menu.php:30
+msgid ""
+"If you need detailed information about the plugin, have a look at <a href="
+"\"https://www.novo-monde.com/novo-map-user-guide/\" target=\"_blank\">the "
+"user guide</a>"
+msgstr ""
+"Si vous avez besoin d'informations détaillées sur le plugin, jetez un oeil "
+"au <a href=\"https://www.novo-monde.com/novo-map-manuel-utilisation/\" "
+"target=\"_blank\">guide utilisateur</a>"
+
+#: admin/partials/main-admin-menu.php:35
+msgid ""
+"Google Map API Key. If you dont have one, <a href=\"https://developers."
+"google.com/maps/documentation/javascript/get-api-key\" target=\"_blank\">get "
+"an API Key</a>"
+msgstr ""
+"Clé API google map. Si vous n'en avez pas, <a href=\"https://developers."
+"google.com/maps/documentation/javascript/get-api-key\" target=\"_blank"
+"\">obtenez une clé API</a>"
+
+#: admin/partials/main-admin-menu.php:37
+msgid "Save API key"
+msgstr "Enregistrer la clé API"
+
+#: admin/partials/main-admin-menu.php:38
+msgid ""
+"If you happen to have some duplicated markers (due to post revisions), click "
+"on this button to delete them"
+msgstr ""
+"Si vous avez des marqueurs dupliqués (à cause de révisions d'articles), "
+"cliquez sur ce boutton pour les effacer"
+
+#: admin/partials/main-admin-menu.php:39
+msgid "Delete duplicated markers"
+msgstr "Effacer les marqueurs dupliqués"
+
+#: admin/partials/main-admin-menu.php:40
+msgid "Select an existing Map or create a new one"
+msgstr "Sélectionnez une carte existante ou créez-en une nouvelle"
+
+#: admin/partials/main-admin-menu.php:45
+msgid "Create a new Map"
+msgstr "Créez une nouvelle carte"
+
+#: admin/partials/main-admin-menu.php:59
+msgid "Map name (has to be unique)"
+msgstr "Nom de la carte (doit être unique)"
+
+#: admin/partials/main-admin-menu.php:62
+msgid "Map Width (in px or %)"
+msgstr "Largeur de la carte (en px ou en %)"
+
+#: admin/partials/main-admin-menu.php:66
+msgid "Map Height (only in px)"
+msgstr "Hauteur de la carte (uniquement en px)"
+
+#: admin/partials/main-admin-menu.php:70
+msgid "Center Latitude"
+msgstr "Latitude du centre"
+
+#: admin/partials/main-admin-menu.php:74
+msgid "Center Longitude"
+msgstr "Longitude du centre"
+
+#: admin/partials/main-admin-menu.php:78
+msgid "Default zoom"
+msgstr "Zoom par défaut"
+
+#: admin/partials/main-admin-menu.php:81 admin/partials/main-admin-menu.php:297
+msgid "Click on the Map to prefill latitude and longitude"
+msgstr "Cliquez sur la carte pour préconfigurer la latitude et la longitude"
+
+#: admin/partials/main-admin-menu.php:83
+msgid "Add map type control menu"
+msgstr "Menu pour le type de carte"
+
+#: admin/partials/main-admin-menu.php:87 admin/partials/main-admin-menu.php:120
+#: admin/partials/main-admin-menu.php:201
+#: admin/partials/main-admin-menu.php:205
+#: admin/partials/main-admin-menu.php:272
+#: admin/partials/main-admin-menu.php:276
+#: admin/partials/main-admin-menu.php:307
+#: admin/partials/main-admin-menu.php:311
+msgid "Yes"
+msgstr "Oui"
+
+#: admin/partials/main-admin-menu.php:88 admin/partials/main-admin-menu.php:121
+#: admin/partials/main-admin-menu.php:202
+#: admin/partials/main-admin-menu.php:206
+#: admin/partials/main-admin-menu.php:273
+#: admin/partials/main-admin-menu.php:277
+#: admin/partials/main-admin-menu.php:308
+#: admin/partials/main-admin-menu.php:312
+msgid "No"
+msgstr "Non"
+
+#: admin/partials/main-admin-menu.php:100
+#: admin/partials/main-admin-menu.php:133
+msgid "Top right corner"
+msgstr "Coin supérieur droit"
+
+#: admin/partials/main-admin-menu.php:101
+#: admin/partials/main-admin-menu.php:134
+msgid "Top left corner"
+msgstr "Coin supérieur gauche"
+
+#: admin/partials/main-admin-menu.php:102
+#: admin/partials/main-admin-menu.php:135
+msgid "Bottom right corner"
+msgstr "Coin inférieur droite"
+
+#: admin/partials/main-admin-menu.php:103
+#: admin/partials/main-admin-menu.php:136
+msgid "Bottom left corner"
+msgstr "Coin inférieur gauche"
+
+#: admin/partials/main-admin-menu.php:104
+#: admin/partials/main-admin-menu.php:137
+msgid "Centered on the right"
+msgstr "Centré sur la droite"
+
+#: admin/partials/main-admin-menu.php:105
+#: admin/partials/main-admin-menu.php:138
+msgid "Centered on the left"
+msgstr "Centré sur la gauche"
+
+#: admin/partials/main-admin-menu.php:116
+msgid "Add a button to zoom"
+msgstr "Ajouter un bouton pour zoomer"
+
+#: admin/partials/main-admin-menu.php:149
+msgid "You can filter markers per category"
+msgstr "Filtrer les marqueurs par catégorie"
+
+#: admin/partials/main-admin-menu.php:163
+msgid "or tag"
+msgstr "ou tag"
+
+#: admin/partials/main-admin-menu.php:189
+msgid ""
+"You can easily create your own style with <a href=\"https://snazzymaps.com/"
+"\" target=\"_blank\">Snazzy Maps</a> or <a href=\"https://mapstyle."
+"withgoogle.com/\" target=\"_blank\">google mapstyle</a> and paste the code "
+"here"
+msgstr ""
+"Vous pouvez facilement créer votre propre style avec <a href=\"https://"
+"snazzymaps.com/\" target=\"_blank\">Snazzy Maps</a> ou <a href=\"https://"
+"mapstyle.withgoogle.com/\" target=\"_blank\">google mapstyle</a> et coller "
+"le code ici"
+
+#: admin/partials/main-admin-menu.php:198
+msgid "Pin Clustering"
+msgstr "Groupes de marqueurs"
+
+#: admin/partials/main-admin-menu.php:199
+msgid "Do you want to turn on the pin clustering ?"
+msgstr "Voulez-vous activer le groupage de marqueurs ?"
+
+#: admin/partials/main-admin-menu.php:209
+msgid "Grid size for the pin clustering"
+msgstr "Taille de la grille pour le regroupement des marqueurs"
+
+#: admin/partials/main-admin-menu.php:213
+msgid "Color of the text in pin clustering"
+msgstr "Couleur du texte dans les marqueurs"
+
+#: admin/partials/main-admin-menu.php:218
+msgid "Small amount of pins clustered"
+msgstr "Petite quantité de marqueurs groupés"
+
+#: admin/partials/main-admin-menu.php:219
+#: admin/partials/main-admin-menu.php:235
+#: admin/partials/main-admin-menu.php:251
+#: admin/partials/main-admin-menu.php:285
+msgid "Select Marker"
+msgstr "Sélectionner un marqueur"
+
+#: admin/partials/main-admin-menu.php:222
+msgid "Text size (small)"
+msgstr "Taille du texte (petit)"
+
+#: admin/partials/main-admin-menu.php:225
+#: admin/partials/main-admin-menu.php:241
+#: admin/partials/main-admin-menu.php:257
+msgid "Align x"
+msgstr "Alignement x"
+
+#: admin/partials/main-admin-menu.php:229
+#: admin/partials/main-admin-menu.php:245
+#: admin/partials/main-admin-menu.php:261
+msgid "Align y"
+msgstr "Alignement y"
+
+#: admin/partials/main-admin-menu.php:234
+msgid "Medium amount of pins clustered"
+msgstr "Quantité moyenne de marqueurs groupés"
+
+#: admin/partials/main-admin-menu.php:238
+msgid "Text size (medium)"
+msgstr "Taille du texte (moyen)"
+
+#: admin/partials/main-admin-menu.php:250
+msgid "Big amount of pins clustered"
+msgstr "Grande quantité de marqueurs groupés"
+
+#: admin/partials/main-admin-menu.php:254
+msgid "Text size (big)"
+msgstr "Taille du texte (grand)"
+
+#: admin/partials/main-admin-menu.php:268
+msgid "Additional Marker"
+msgstr "Marqueur supplémentaire"
+
+#: admin/partials/main-admin-menu.php:270
+msgid ""
+"Do you want to add an additional marker (to indicate your current position "
+"or whatever you like)"
+msgstr ""
+"Voulez-vous ajouter un marqueur supplémentaire (pour indiquer votre position "
+"actuelle ou ce que vous voulez d'autre)"
+
+#: admin/partials/main-admin-menu.php:280
+msgid "Additional marker Title"
+msgstr "Titre du marqueur"
+
+#: admin/partials/main-admin-menu.php:284
+msgid "Additional marker Image"
+msgstr "Image du marqueur"
+
+#: admin/partials/main-admin-menu.php:290
+msgid "Additional marker Latitude"
+msgstr "Latitude du marqueur"
+
+#: admin/partials/main-admin-menu.php:294
+msgid "Additional marker Longitude"
+msgstr "Longitude du marqueur"
+
+#: admin/partials/main-admin-menu.php:304
+msgid "Additional Options"
+msgstr "Options additionelles"
+
+#: admin/partials/main-admin-menu.php:305
+msgid ""
+"Load the map scripts automatically (set it to \"No\" only if you know what "
+"you are doing!!!)"
+msgstr ""
+"Chargez les scripts de la carte automatiquement (réglez le sur \"Non\" "
+"seulement si vous savez ce que vous faites !!! )"
+
+#: admin/partials/main-admin-menu.php:319
+msgid "Shortcode for this map"
+msgstr "Shortcode pour cette carte"
+
+#: admin/partials/main-admin-menu.php:320
+msgid "You can use this shortcode to display this map wherever you like"
+msgstr ""
+"Vous pouvez utiliser ce shortcode pour afficher cette carte où vous voulez"
+
+#: admin/partials/main-admin-menu.php:327
+msgid "Update Map"
+msgstr "Mettre à jour"
+
+#: admin/partials/main-admin-menu.php:328
+msgid "Delete Map"
+msgstr "Supprimer la carte"
+
+#: admin/partials/main-admin-menu.php:331
+msgid "Create Map"
+msgstr "Créer une carte"
+
+#: admin/partials/marker-logo-admin-menu.php:23
+msgid "Add you own Markers"
+msgstr "Créez vos propres marqueurs"
+
+#: admin/partials/marker-logo-admin-menu.php:27
+msgid "Choose from list"
+msgstr "Choisir une image"
+
+#: admin/partials/marker-logo-admin-menu.php:28
+msgid "Add your own"
+msgstr "Ajouter la votre"
+
+#: admin/partials/marker-logo-admin-menu.php:31
+msgid "width (px)"
+msgstr "largeur (px)"
+
+#: admin/partials/marker-logo-admin-menu.php:35
+msgid "height (px)"
+msgstr "hauteur (px)"
+
+#: admin/partials/marker-logo-admin-menu.php:39
+msgid "horizontal align"
+msgstr "alignement horizontal"
+
+#: admin/partials/marker-logo-admin-menu.php:43
+msgid "left"
+msgstr "gauche"
+
+#: admin/partials/marker-logo-admin-menu.php:44
+#: admin/partials/marker-logo-admin-menu.php:61
+msgid "middle"
+msgstr "milieu"
+
+#: admin/partials/marker-logo-admin-menu.php:45
+msgid "right"
+msgstr "droite"
+
+#: admin/partials/marker-logo-admin-menu.php:56
+msgid "vertical align"
+msgstr "alignement vertical"
+
+#: admin/partials/marker-logo-admin-menu.php:60
+msgid "bottom"
+msgstr "bas"
+
+#: admin/partials/marker-logo-admin-menu.php:62
+msgid "top"
+msgstr "haut"
+
+#: admin/partials/marker-logo-admin-menu.php:78
+#: admin/partials/post-admin-menu.php:73
+msgid "Update marker"
+msgstr "Mettre à jour le marqueur"
+
+#: admin/partials/marker-logo-admin-menu.php:79
+msgid "Add new"
+msgstr "Ajouter un nouveau"
+
+#: admin/partials/marker-logo-admin-menu.php:82
+#: admin/partials/post-admin-menu.php:70
+msgid "Add marker"
+msgstr "Ajouter un marqueur"
+
+#: admin/partials/marker-logo-admin-menu.php:92
+msgid "w:"
+msgstr "w :"
+
+#: admin/partials/marker-logo-admin-menu.php:93
+msgid "h:"
+msgstr "h :"
+
+#: admin/partials/marker-logo-admin-menu.php:96
+msgid "Edit"
+msgstr "Modifier"
+
+#: admin/partials/marker-logo-admin-menu.php:97
+msgid "Delete"
+msgstr "Supprimer"
+
+#: admin/partials/novo-map-widget.php:2
+msgid "Choose a map"
+msgstr "Choisissez une carte"
+
+#: admin/partials/post-admin-menu.php:29
+msgid "Title of the Marker"
+msgstr "Titre du marqueur"
+
+#: admin/partials/post-admin-menu.php:32
+msgid "Select a Marker image"
+msgstr "Sélectionnez un marqueur"
+
+#: admin/partials/post-admin-menu.php:33
+msgid "Select"
+msgstr "Choisir"
+
+#: admin/partials/post-admin-menu.php:38
+msgid "Latitude"
+msgstr "Latitude"
+
+#: admin/partials/post-admin-menu.php:40
+msgid "Longitude"
+msgstr "Longitude"
+
+#: admin/partials/post-admin-menu.php:42
+msgid "Click on the map to prefill"
+msgstr "Cliquez sur la carte pour pré-remplir"
+
+#: admin/partials/post-admin-menu.php:52
+msgid "Add an image in the Infobox"
+msgstr "Ajouter une image dans l'Infobox"
+
+#: admin/partials/post-admin-menu.php:56
+msgid "Upload"
+msgstr "Ajouter"
+
+#: admin/partials/post-admin-menu.php:57
+msgid "Remove"
+msgstr "Supprimer"
+
+#: admin/partials/post-admin-menu.php:61
+msgid "Text description of the Infobox"
+msgstr "Description texte de l'Infobox"
+
+#: admin/partials/post-admin-menu.php:74
+msgid "Delete marker"
+msgstr "Effacer le marqueur"
+
+#: includes/class-novo-map-gmap.php:398
+msgid ""
+"<div class=\"notice notice-error is-dismissible\"><p>only valid width in % "
+"or px are allowed like : 100%</p></div>"
+msgstr ""
+"<div class=\"notice notice-error is-dismissible\"><p>seule la largeur valide "
+"en % ou px est autorisée comme : 100%</p></div>"
+
+#: includes/class-novo-map-gmap.php:412
+msgid ""
+"<div class=\"notice notice-error is-dismissible\"><p>only valid height in px "
+"is allowed like: 300px </p></div>"
+msgstr ""
+"<div class=\"notice notice-error is-dismissible\"><p>seule la hauteur valide "
+"en px est autorisée comme: 300px </p></div>"
+
+#: includes/class-novo-map-gmap.php:522
+msgid ""
+"<div class=\"notice notice-error is-dismissible\"><p>The color has not the "
+"right HEX format</p></div>"
+msgstr ""
+"<div class=\"notice notice-error is-dismissible\"><p>La couleur n'a pas le "
+"bon format HEX</p></div>"
+
+#: includes/class-novo-map-gmap.php:682
+msgid ""
+"<div class=\"notice notice-error is-dismissible\"><p>JSON style has not the "
+"right format </p></div>"
+msgstr ""
+"<div class=\"notice notice-error is-dismissible\"><p>Le style JSON n'a pas "
+"le bon format</p></div>"
+
+#: public/class-novo-map-public.php:142
+msgid "<strong>This Gmap id is not defined</strong>"
+msgstr "<strong>Cette id Gmap n'est pas définie</strong>"
+
+#. Plugin Name of the plugin/theme
+msgid "Novo-Map"
+msgstr "Novo-Map"
+
+#. Plugin URI of the plugin/theme
+msgid "https://wordpress.org/plugins/novo-map/"
+msgstr "https://wordpress.org/plugins/novo-map/"
+
+#. Description of the plugin/theme
+msgid "Display all your posts and pages on custom google maps"
+msgstr ""
+"Affichez tous vos articles et pages sur des cartes google personnalisées"
+
+#. Author of the plugin/theme
+msgid "novo-media"
+msgstr "(Traduction Fr de Gpsman.bzh) pour Novo-Média"
+
+#. Author URI of the plugin/theme
+msgid "www.novo-media.ch"
+msgstr "www.novo-media.ch"

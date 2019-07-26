@@ -1,0 +1,17 @@
+.novo-map-container {
+    max-width: 100%;
+}
+
+/* important for the cluster markers */
+.novo-map-container * {
+    box-sizing: content-box;
+}
+
+.novo-map-container .infobox * {
+    box-sizing: border-box;
+}
+
+/*fix for some themes like wp 2017*/
+.novo-map-container a img {
+    box-shadow: none !important;
+}

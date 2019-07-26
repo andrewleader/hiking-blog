@@ -1,0 +1,14 @@
+.beta-img {
+	position: relative; /* So that child will position onto it */
+}
+
+.beta-img-topo {
+	position: absolute;
+	top: 0;
+	left: 0;
+}
+
+#TB_ajaxContent {
+	width: auto !important;
+	height: auto !important;
+}

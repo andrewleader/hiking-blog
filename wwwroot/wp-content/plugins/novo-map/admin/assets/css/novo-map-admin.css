@@ -1,0 +1,440 @@
+/******** General styles *********/
+.novo-map-inline {
+    display: inline-block;
+    margin-right: 20px;
+    vertical-align: top;
+    max-width: 220px;
+}
+
+.novo-map-small {
+    max-width: 120px;
+}
+
+.novo-map-inline input {
+    max-width: 100%;
+}
+
+.novo-map-fieldset-line {
+    display: block;
+    width: 100%;
+}
+
+/******** Main admin Menu ********/
+
+.novo-map-gmap-left, .novo-map-gmap-right {
+    display: inline-block;
+    vertical-align: top;
+}
+
+.novo-map-gmap-left {
+    width: 55%;
+}
+
+.novo-map-gmap-right {
+    margin-left: 2.5%;
+    width: 40%;
+}
+
+.novo-map-main-admin-menu .novo-map-gmap-menu-map {
+    height : 500px;
+}
+
+.novo-map-main-admin-menu .novo-map-gmap-menu-map * {
+    box-sizing: content-box;
+}
+
+.novo-map-main-admin-menu .novo-map-gmap-menu-map-small {
+    height : 200px;
+    margin-top: 15px;
+}
+
+#novo-map-gmap-marker-logo-folder-images {
+    position: fixed;
+    z-index: 10000;
+    width: 100%;
+    height:100%;
+    background-color: rgba(0,0,0,0.6);
+    left: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    top: -200%;
+}
+
+#novo-map-gmap-marker-logo-folder-images h4 {
+    color: white;
+    text-align: center;
+}
+
+#novo-map-gmap-marker-logo-folder-images img:hover {
+    opacity: 0.6;
+}
+
+#novo-map-gmap-marker-logo-folder-images .gmap-marker-logo-wrap {
+    width:60%;
+    height:60%;
+}
+
+#novo-map-gmap-marker-logo-folder-images div div {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+
+
+#novo-map-gmap-marker-logo-folder-images-close {
+    display: block;
+    margin-bottom: 30px;
+    height: 30px;
+}
+
+#novo-map-gmap-marker-logo-folder-images-close img {
+    width: 30px;
+    height: 30px;
+    float: right;
+}
+
+.novo-map-main-admin-menu fieldset
+{
+    border-top: 1px solid;
+    padding: 5px;
+    margin-bottom: 15px;
+    margin-top: 25px;
+}
+
+.novo-map-main-admin-menu fieldset .nested
+{
+    background-color: white;
+    padding: 5px;
+    margin-bottom: 15px;
+    margin-top: 15px;
+    border-color: #ababab;
+    margin-right: 20px;
+    width: 300px;
+    max-width: 100%;
+    float: left;
+
+}
+
+.novo-map-main-admin-menu fieldset .nested img, .novo-map-main-admin-menu fieldset .nested span {
+    display: inline-block;
+    vertical-align: middle;
+    margin-bottom: 10px;
+    margin-right: 10px;
+}
+
+.novo-map-main-admin-menu fieldset legend
+{
+    font-weight: bold;
+    font-size: 16px;
+}
+
+.novo-map-main-admin-menu fieldset .nested legend
+{
+    font-weight: bold;
+    font-size: 14px;
+}
+
+.novo-map-main-admin-menu label
+{
+    display: block;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.novo-map-main-admin-menu textarea
+{
+    width: 100%;
+    height: 100px;
+}
+
+#novo-map-gmap-additional-marker-logo span, #novo-map-gmap-additional-marker-logo img{
+    display: inline-block;
+    vertical-align: middle;
+    margin-bottom: 10px;
+    margin-right: 10px;
+}
+
+.novo-map-main-admin-menu input[type=submit] {
+    margin-right: 20px;
+}
+
+
+@media (max-width: 850px) {
+    .novo-map-gmap-left, .novo-map-gmap-right {
+        display: block;
+    }
+
+    .novo-map-gmap-left {
+        width: 100%;
+    }
+
+    .novo-map-gmap-right {
+        margin-left: 0;
+        width: 100%;
+    }
+}
+
+
+/******** Marker logo admin menu ********/
+
+.novo-map-marker-logo-admin-menu {
+
+}
+
+.novo-map-marker-logo-admin-menu form {
+    width: 240px;
+    padding: 10px;
+    float: left;
+    margin-right: 70px;
+    background-color: white;
+}
+
+.novo-map-marker-logo-admin-menu form img {
+    float: right;
+    max-width: 80px;
+    max-height: 80px;
+}
+
+.novo-map-marker-logo-admin-menu form .novo-map-form-grid {
+    width: 46%;
+    padding: 2%;
+    float: left;
+}
+
+.novo-map-marker-logo-admin-menu form .novo-map-form-grid input {
+    max-width: 100%;
+}
+
+#novo-map-marker-logo-media-upload, #novo-map-marker-logo-select-folder {
+    display: block;
+    width: 120px;
+    margin: 5px;
+}
+
+#novo-map-marker-logo-add-update .button {
+    margin: 5px;
+}
+
+#novo-map-marker-logo-folder-images {
+    position: fixed;
+    z-index: 10000;
+    width: 100%;
+    height:100%;
+    background-color: rgba(0,0,0,0.6);
+    left: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    top: -200%;
+}
+
+#novo-map-marker-logo-folder-images img:hover {
+    opacity: 0.6;
+}
+
+#novo-map-marker-logo-folder-images .marker-logo-wrap {
+    width:60%;
+    height:60%;
+}
+
+#novo-map-marker-logo-folder-images div div {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+
+#novo-map-marker-logo-folder-images-close {
+    display: block;
+    margin-bottom: 30px;
+    height: 30px;
+}
+
+#novo-map-marker-logo-folder-images-close img {
+    width: 30px;
+    height: 30px;
+    float: right;
+}
+
+.novo-map-marker-logo-user {
+    display: inline-block;
+    border: 2px solid #82878c;
+    border-radius: 20px;
+    padding: 10px;
+    margin-right: 20px;
+    margin-top: 20px;
+    width: 130px;
+}
+
+.novo-map-marker-logo-user img {
+    float: right;
+    margin-left: 5px;
+    margin-bottom: 5px;
+    max-width: 80px;
+    max-height: 80px;
+}
+
+.novo-map-marker-logo-user-edit-delete {
+    display: inline-block;
+    width: 130px;
+}
+
+
+/******** Post Admin menu ********/
+
+#novo-map-post-admin-menu .novo-map-post-inline {
+    display: inline-block;
+    vertical-align: top;
+    margin-bottom: 15px;
+}
+
+#novo-map-post-admin-menu #novo-map-post-left {
+    width: 50%
+}
+
+#novo-map-post-admin-menu #novo-map-post-right {
+    width: 45%;
+}
+
+#novo-map-post-admin-menu label
+{
+    display: block;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+#novo-map-post-admin-menu #postmenumap {
+    width: 100%;
+    height: 170px;
+}
+
+#novo-map-post-admin-menu #novo-map-post-latlng {
+    width: 42%;
+    min-width: 120px;
+    max-width: 100%;
+}
+
+#novo-map-post-admin-menu #novo-map-post-marker-title {
+    width: 42%;
+    min-width: 120px;
+    max-width: 100%;
+}
+
+#novo-map-marker-marker-logo-id, #novo-map-marker-marker-logo-id-image {
+    vertical-align: middle;
+    display: inline-block;
+}
+
+#novo-map-marker-marker-logo-id-image {
+    margin-left: 20px;
+}
+
+.novo-map-marker-upload-infobox-image, #novo-map-post-marker-textarea {
+    display: inline-block;
+    vertical-align: top;
+    margin-bottom: 15px;
+}
+
+.novo-map-marker-upload-infobox-image {
+    width: 25%;
+}
+
+#novo-map-post-marker-textarea {
+    width: 65%;
+    margin-left: 15px;
+}
+
+.novo-map-marker-upload-infobox-image img {
+    display: block;
+    width: 150px;
+    margin-bottom: 20px;
+}
+
+#novo-map-marker-add-delete {
+    margin-top: 20px;
+    display: block;
+    width: 100%;
+    text-align: left;
+}
+
+#novo-map-marker-add-delete button {
+    margin-right: 10px;
+}
+
+#novo-map-marker-marker-logo-folder-images {
+    position: absolute;
+    z-index: 10000;
+    width: 100%;
+    height:100%;
+    background-color: rgba(0,0,0,0.6);
+    left: 0;
+    display: none;
+    align-items: center;
+    justify-content: center;
+}
+
+#novo-map-marker-marker-logo-folder-images h4 {
+    color: white;
+    text-align: center;
+}
+
+#novo-map-marker-marker-logo-folder-images img:hover {
+    opacity: 0.6;
+}
+
+#novo-map-marker-marker-logo-folder-images .marker-marker-logo-wrap {
+    width:80%;
+    height:95%;
+}
+
+#novo-map-marker-marker-logo-folder-images div div {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+
+
+#novo-map-marker-marker-logo-folder-images-close {
+    display: block;
+    margin-bottom: 10px;
+    height: 30px;
+}
+
+#novo-map-marker-marker-logo-folder-images-close img {
+    width: 30px;
+    height: 30px;
+    float: right;
+}
+
+@media (max-width: 600px) {
+    #novo-map-post-admin-menu .novo-map-post-inline {
+        display: block;
+        margin-bottom: 15px;
+    }
+
+    #novo-map-post-admin-menu #novo-map-post-left {
+        width: 100%
+    }
+
+    #novo-map-post-admin-menu #novo-map-post-right {
+        width: 100%;
+    }
+
+    .novo-map-marker-upload-infobox-image {
+        width: 100%;
+    }
+
+    #novo-map-post-marker-textarea {
+        width: 100%;
+        margin-left: 0;
+    }
+
+    .novo-map-marker-upload-infobox-image, #novo-map-post-marker-textarea {
+        display: block;
+    }
+}
