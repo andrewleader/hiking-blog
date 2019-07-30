@@ -164,7 +164,7 @@
 		}
 	}
 
-	class FieldsForPlan {
+	class FieldsForPlan extends BaseFields {
         public $destinations;
         public $startDate;
         public $endDate;
