@@ -109,8 +109,33 @@ function removeBetaCreator() {
     
     edit: function(props) {
       function onSelectImage(value) {
+
+        /*
+        Value props
+        
+        id -> number
+        url -> Full resolution
+        link -> img_7297/ ??
+        icon -> icon url? Although it points to some default icon
+        editLink -> Link to edit image
+        height -> height in pixels
+        width -> width in pixels
+        orientation -> "landscape" or "portrait"
+        sizes -> object
+        	thumbnail -> (150x150)
+        		height
+        		width
+        		url
+        		orientation
+        	medium -> (300x200)
+        	large -> (525x350, but actually gives 1024x683 img)
+        	full -> (original)
+        	medium_large -> 1152x768
+        	post-thumbnail -> (600x450)
+        */
+
         props.setAttributes({
-          imgUrl: value.url,
+          imgUrl: value.sizes["large"].url,
           imgId: value.id
         });
         showBetaCreator(value.url, undefined, onBetaCreatorSaved);
