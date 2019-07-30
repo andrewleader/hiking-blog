@@ -64,7 +64,7 @@
                             case "trip_plan":
                                 $dateText = $fields->getDateString();
                                 ?>
-                                    <span class="posted on">
+                                    <span class="posted-on">
                                         <span class="screen-reader-text">Planned for</span>
                                         <span><?php echo htmlspecialchars($dateText); ?></span>
                                     </span>

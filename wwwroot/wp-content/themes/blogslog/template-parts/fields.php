@@ -204,7 +204,7 @@
 		}
 
 		private function formatDate($date) {
-			date("F j, Y", strtotime($date)); // July 30, 2019
+			return date("F j, Y", strtotime($date)); // July 30, 2019
 		}
 	}
 		
