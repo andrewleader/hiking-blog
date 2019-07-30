@@ -11,7 +11,7 @@
  
  require_once('fields.php');
  
- $fields = new Fields($post);
+ $fields = Fields::get($post);
  
  $title = $post->post_title;
  if (isset($fields->peakPost)) {

@@ -14,8 +14,33 @@
 			return is_array($this->value) || strlen($this->value) > 0;
 		}
 	}
+
+	abstract class BaseFields {
+		protected function cleanTable($table) {
+			for ($i = 0; $i < count($table); $i++) {
+				if (!$table[$i]->hasValue()) {
+					array_splice($table, $i, 1);
+					$i--;
+				}
+			}
+			return $table;
+		}
+		
+		abstract public function createListSubtitle();
+		
+		protected function formatAsString($values, $separator) {
+			$answer = "";
+			foreach ($values as $v) {
+				if (strlen($answer) > 0) {
+					$answer .= $separator;
+				}
+				$answer .= $v;
+			}
+			return $answer;
+		}
+	}
 	
-	class Fields {
+	class Fields extends BaseFields {
 		public $peak;
 		public $peakPost;
 		public $miles;
@@ -106,17 +131,7 @@
 				$weatherRow->value = '<a href="'.$weatherRow->value.'" target="_blank">View forecast</a>';
 			}
 		}
-		
-		function cleanTable($table) {
-			for ($i = 0; $i < count($table); $i++) {
-				if (!$table[$i]->hasValue()) {
-					array_splice($table, $i, 1);
-					$i--;
-				}
-			}
-			return $table;
-		}
-		
+
 		public function createListSubtitle() {
 			if ($this->yds_rating->hasValue()) {
 				$items = [];
@@ -135,16 +150,53 @@
 				return "";
 			}
 		}
-		
-		function formatAsString($values, $separator) {
-			$answer = "";
-			foreach ($values as $v) {
-				if (strlen($answer) > 0) {
-					$answer .= $separator;
-				}
-				$answer .= $v;
+
+		public static function get($post) {
+			switch ($post->post_type) {
+				case "trip_plan":
+				   $fields = new FieldsForPlan($post);
+				   break;
+		   
+			   default:
+				   $fields = new Fields($post);
+				   break;
 			}
-			return $answer;
+		}
+	}
+
+	class FieldsForPlan {
+        public $destinations;
+        public $startDate;
+        public $endDate;
+
+        public $table;
+		
+		public function __construct($post) {
+			// $this->peak = getMeta($post, "peak", "Peak");
+			// if ($this->peak->hasValue()) {
+			// 	$this->peakPost = get_post($this->peak->value);
+			// 	$this->peak->value = '<a href="'.get_permalink($this->peakPost).'">'.$this->peakPost->post_title.'</a>';
+            // }
+            $this->startDate = getMeta($post, "start_date", "Start date");
+            $this->endDate = getMeta($post, "end_date", "End date");
+			
+			$this->table = [
+				$this->startDate,
+				$this->endDate
+			];
+			
+			$this->table = $this->cleanTable($this->table);
+		}
+
+		public function createListSubtitle() {
+			if ($this->startDate->hasValue()) {
+				if ($this->endDate->hasValue()) {
+					return $this->startDate->value . " to " . $this->endDate.value;
+				}
+				return $this->startDate->value;
+			} else {
+				return "";
+			}
 		}
 	}
 		
