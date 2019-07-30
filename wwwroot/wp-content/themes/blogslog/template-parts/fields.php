@@ -154,12 +154,10 @@
 		public static function get($post) {
 			switch ($post->post_type) {
 				case "trip_plan":
-				   $fields = new FieldsForPlan($post);
-				   break;
+				   return new FieldsForPlan($post);
 		   
 			   default:
-				   $fields = new Fields($post);
-				   break;
+				   return new Fields($post);
 			}
 		}
 	}
