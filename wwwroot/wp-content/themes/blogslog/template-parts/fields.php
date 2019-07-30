@@ -189,7 +189,7 @@
 		public function createListSubtitle() {
 			if ($this->startDate->hasValue()) {
 				if ($this->endDate->hasValue()) {
-					return $this->startDate->value . " to " . $this->endDate.value;
+					return $this->startDate->value . " to " . $this->endDate->value;
 				}
 				return $this->startDate->value;
 			} else {
