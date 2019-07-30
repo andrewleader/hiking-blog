@@ -49,8 +49,8 @@
 
             // No meta for these
             switch ($post->post_type) {
-                case "peak":
-                case "route":
+                case "peaks":
+                case "routes":
                     $includeMeta = false;
                     break;
             }
