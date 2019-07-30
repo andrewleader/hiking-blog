@@ -43,12 +43,46 @@
             <p><?php the_excerpt(); ?></p>
         </div><!-- .entry-content -->
 
-        <div class="entry-meta">
-            <?php  
-                blogslog_posted_on();
-                echo blogslog_author();
-            ?>
-        </div><!-- .entry-meta -->
+        <?php
+
+            $includeMeta = true;
+
+            // No meta for these
+            switch ($post->post_type) {
+                case "peak":
+                case "route":
+                    $includeMeta = false;
+                    break;
+            }
+
+            if ($includeMeta) { ?>
+
+                <div class="entry-meta">
+                    <?php
+
+                        switch ($post->post_type) {
+                            case "trip_plan":
+                                $dateText = $fields->getDateString();
+                                ?>
+                                    <span class="posted on">
+                                        <span class="screen-reader-text">Planned for</span>
+                                        <span><?php echo htmlspecialchars($dateText); ?></span>
+                                    </span>
+                                <?php
+                                break;
+
+                            default:
+                                blogslog_posted_on();
+                                break;
+                        }
+
+                        echo blogslog_author();
+                    ?>
+                </div><!-- .entry-meta -->
+
+
+            <?php }
+        ?>
     </div><!-- .entry-container -->
 
 </article><!-- #post-## -->

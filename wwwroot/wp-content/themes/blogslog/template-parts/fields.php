@@ -187,14 +187,24 @@
 		}
 
 		public function createListSubtitle() {
+			// We don't need a subtitle for these
+			return "";
+		}
+
+		public function getDateString() {
+			// This is used for displaying in the list view
 			if ($this->startDate->hasValue()) {
 				if ($this->endDate->hasValue()) {
-					return $this->startDate->value . " to " . $this->endDate->value;
+					return $this->formatDate($this->startDate->value) . " to " . $this->formatDate($this->endDate->value);
 				}
-				return $this->startDate->value;
+				return $this->formatDate($this->startDate->value);
 			} else {
-				return "";
+				return "No date";
 			}
+		}
+
+		private function formatDate($date) {
+			date("F j, Y", strtotime($date)); // July 30, 2019
 		}
 	}
 		
