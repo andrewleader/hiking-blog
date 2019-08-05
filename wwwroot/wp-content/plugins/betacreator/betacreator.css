@@ -8,6 +8,11 @@
 	left: 0;
 }
 
+.beta-img-topo,
+.beta-img-original {
+	max-height: 750px;
+}
+
 #TB_ajaxContent {
 	width: auto !important;
 	height: auto !important;
