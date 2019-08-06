@@ -68,6 +68,13 @@ function removeBetaCreator() {
   }
 }
 
+function uuidv4() {
+  return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {
+    var r = Math.random() * 16 | 0, v = c == 'x' ? r : (r & 0x3 | 0x8);
+    return v.toString(16);
+  });
+}
+
 /* This section of the code registers a new block, sets an icon and a category, and indicates what type of fields it'll include. */
 ( function (blocks, element) {
   
@@ -103,6 +110,12 @@ function removeBetaCreator() {
         source: 'attribute',
         selector: 'img.beta-img-topo',
         attribute: 'src'
+      },
+      id: { // We need a unique ID for the input label
+        type: 'string',
+        source: 'attribute',
+        selector: 'input',
+        attribute: 'id'
       }
     },
 
@@ -141,7 +154,8 @@ function removeBetaCreator() {
 
         props.setAttributes({
           imgUrl: imgUrl,
-          imgId: value.id
+          imgId: value.id,
+          id: props.id ?? uuidv4()
         });
         showBetaCreator(value.url, undefined, onBetaCreatorSaved);
         return true;
@@ -156,6 +170,21 @@ function removeBetaCreator() {
           topoData: topoData,
           topoPng: topoPng
         });
+      }
+      
+      if (!props.attributes.id) {
+       return el(
+         'button',
+         {
+           type: 'button',
+           onClick: () => {
+             props.setAttributes({
+               id: uuidv4()
+             });
+           }
+         },
+         'Up-convert'
+       );
       }
       
       return el(
@@ -180,14 +209,14 @@ function removeBetaCreator() {
                   'input',
                   {
                     type: 'checkbox',
-                    id: 'showOverlay',
+                    id: 'show-overlay-' + props.attributes.id,
                     checked: true
                   }
                 ),
                 el(
                   'label',
                   {
-                    for: 'showOverlay'
+                    for: 'show-overlay-' + props.attributes.id
                   },
                   'Show overlay'
                 ),
@@ -234,14 +263,14 @@ function removeBetaCreator() {
             'input',
             {
               type: 'checkbox',
-              id: 'showOverlay',
+              id: 'show-overlay-' + props.attributes.id,
               checked: true
             }
           ),
           el(
             'label',
             {
-              for: 'showOverlay'
+              for: 'show-overlay-' + props.attributes.id
             },
             'Show overlay'
           ),
