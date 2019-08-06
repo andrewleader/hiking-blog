@@ -155,7 +155,7 @@ function uuidv4() {
         props.setAttributes({
           imgUrl: imgUrl,
           imgId: value.id,
-          id: props.id ?? uuidv4()
+          id: props.id || uuidv4()
         });
         showBetaCreator(value.url, undefined, onBetaCreatorSaved);
         return true;
