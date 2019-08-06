@@ -38,8 +38,11 @@ jQuery(function($) {
             var caption = null;
 
             if (element.hasClass('.wp-block-andrewleader-betacreator')) {
+                var html = element.get(0).outerHTML;
+                // Make the ID unique for the full screen version so the label works
+                html.replace('show-overlay-', 'pswd-show-overlay');
                 galleryItems.push({
-                    html: element.get(0).outerHTML
+                    html: html
                 });
             } else {
                 var img = element.find('img');
