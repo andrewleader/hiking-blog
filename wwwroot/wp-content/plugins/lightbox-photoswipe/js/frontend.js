@@ -19,7 +19,7 @@ jQuery(function($) {
         openPhotoSwipe( false, this, false, '' );
     });
 
-    $('body').on('click', '.wp-block-andrewleader-betacreator beta-img-topo', function(e) {
+    $('body').on('click', '.wp-block-andrewleader-betacreator .beta-img-topo', function(e) {
         if( !PhotoSwipe || !PhotoSwipeUI_Default ) {
             return;
         }
