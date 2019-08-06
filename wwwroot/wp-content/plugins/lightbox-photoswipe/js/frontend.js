@@ -177,7 +177,7 @@ jQuery(function($) {
             }
 
             if (item.originalSrc) {
-                if (useLargeImages) {
+                if (useLargeImages && navigator.onLine) {
                     item.src = item.originalSrc;
                     item.msrc = item.smallerSrc; // Smaller preview displayed while loading
                 } else {
