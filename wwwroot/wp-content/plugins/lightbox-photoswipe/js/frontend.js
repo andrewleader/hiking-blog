@@ -18,32 +18,48 @@ jQuery(function($) {
         e.preventDefault();
         openPhotoSwipe( false, this, false, '' );
     });
+
+    $('body').on('click', '.wp-block-andrewleader-betacreator beta-img-topo', function(e) {
+        if( !PhotoSwipe || !PhotoSwipeUI_Default ) {
+            return;
+        }
+
+        e.preventDefault();
+        openPhotoSwipe( false, $(this).closest('.wp-block-andrewleader-betacreator').get(0), false, '' );
+    });
     
     var parseThumbnailElements = function(link) {
-        var elements = $('body').find(selector),
+        var elements = $('body').find(selector + ', .wp-block-andrewleader-betacreator'),
             galleryItems = [],
             index;
         
         elements.each(function(i) {
             var element = $(this);
             var caption = null;
-            var img = element.find('img');
 
-            caption = element.find('figcaption').text();
+            if (element.hasClass('.wp-block-andrewleader-betacreator')) {
+                galleryItems.push({
+                    html: element.get(0).outerHTML
+                });
+            } else {
+                var img = element.find('img');
 
-            if(caption == null && lbwps_options.use_alt == '1') {
-                caption = img.attr('alt');
+                caption = element.find('figcaption').text();
+
+                if(caption == null && lbwps_options.use_alt == '1') {
+                    caption = img.attr('alt');
+                }
+
+                galleryItems.push({
+                    src: img.attr('src'),
+                    w: 0,
+                    h: 0,
+                    title: caption,
+                    getThumbBoundsFn: false,
+                    showHideOpacity: true,
+                    el: img.get(0)
+                });
             }
-
-            galleryItems.push({
-                src: img.attr('src'),
-                w: 0,
-                h: 0,
-                title: caption,
-                getThumbBoundsFn: false,
-                showHideOpacity: true,
-                el: img.get(0)
-            });
             if( link === element.get(0) ) {
                 index = i;
             }
@@ -155,6 +171,10 @@ jQuery(function($) {
 
         gallery = new PhotoSwipe( pswpElement, PhotoSwipeUI_Default, items, options);
         gallery.listen('gettingData', function (index, item) {
+
+            if (item.html) {
+                return;
+            }
 
             // If we need to initialze the image
             if (item.w < 1 || item.h < 1) {
