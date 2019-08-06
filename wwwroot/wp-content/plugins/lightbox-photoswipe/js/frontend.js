@@ -1,5 +1,5 @@
 jQuery(function($) {
-    var selector = '.wp-block-image:has(img), .wp-block-gallery-item:has(img)';
+    var selector = '.wp-block-image, .blocks-gallery-item';
 
     var PhotoSwipe = window.PhotoSwipe,
         PhotoSwipeUI_Default = window.PhotoSwipeUI_Default;
@@ -21,21 +21,22 @@ jQuery(function($) {
         elements.each(function(i) {
             var element = $(this);
             var caption = null;
+            var img = element.find('img');
 
             caption = element.find('figcaption').text();
 
             if(caption == null && lbwps_options.use_alt == '1') {
-                caption = element.find('img').attr('alt');
+                caption = img.attr('alt');
             }
 
             galleryItems.push({
-                src: element.attr('src'),
-                w: element.attr('data-width'),
-                h: element.attr('data-height'),
+                src: img.attr('src'),
+                w: 0,
+                h: 0,
                 title: caption,
                 getThumbBoundsFn: false,
                 showHideOpacity: true,
-                el: element.find('img').get(0)
+                el: img.get(0)
             });
             if( link === element.get(0) ) {
                 index = i;
