@@ -4,6 +4,12 @@ jQuery(function($) {
     var PhotoSwipe = window.PhotoSwipe,
         PhotoSwipeUI_Default = window.PhotoSwipeUI_Default;
 
+    // create variable that will store real size of viewport
+    var realViewportWidth,
+        useLargeImages = false,
+        firstResize = true,
+        imageSrcWillChange;
+
     $('body').on('click', selector, function(e) {
         if( !PhotoSwipe || !PhotoSwipeUI_Default ) {
             return;
@@ -149,6 +155,37 @@ jQuery(function($) {
 
         gallery = new PhotoSwipe( pswpElement, PhotoSwipeUI_Default, items, options);
         gallery.listen('gettingData', function (index, item) {
+
+            // If we need to initialze the image
+            if (item.w < 1 || item.h < 1) {
+
+                // Try initializing from url
+                var matchResult = item.src.match(/(https:\/\/andrewbares\.blob\.core\.windows\.net\/.*)-(\d+)x(\d+)(\..*)/);
+                if (matchResult) {
+                    // Input: https://andrewbares.blob.core.windows.net/hiking-blog-images/2019/08/IMG_7696-1024x683.jpg
+                    // Group 1: https://andrewbares.blob.core.windows.net/hiking-blog-images/2019/08/IMG_7696
+                    // Group 2: 1024 (width)
+                    // Group 3: 683 (height)
+                    // Group 4: .jpg
+                    item.w = parseInt(matchResult[2]);
+                    item.h = parseInt(matchResult[3]);
+
+                    // Get the original resolution image
+                    item.originalSrc = matchResult[1] + matchResult[4];
+                    item.smallerSrc = item.src;
+                }
+            }
+
+            if (item.originalSrc) {
+                if (useLargeImages) {
+                    item.src = item.originalSrc;
+                    item.msrc = item.smallerSrc; // Smaller preview displayed while loading
+                } else {
+                    item.src = item.smallerSrc;
+                }
+            }
+
+            // If we still couldn't initialize from url
             if (item.w < 1 || item.h < 1) {
                 var img = new Image();
                 img.onload = function () {
@@ -158,6 +195,44 @@ jQuery(function($) {
                 };
                 img.src = item.src;
             }
+        });
+
+        // beforeResize event fires each time size of gallery viewport updates
+        // https://photoswipe.com/documentation/responsive-images.html
+        gallery.listen('beforeResize', function() {
+            // gallery.viewportSize.x - width of PhotoSwipe viewport
+            // gallery.viewportSize.y - height of PhotoSwipe viewport
+            // window.devicePixelRatio - ratio between physical pixels and device independent pixels (Number)
+            //                          1 (regular display), 2 (@2x, retina) ...
+
+
+            // calculate real pixels when size changes
+            realViewportWidth = gallery.viewportSize.x * window.devicePixelRatio;
+
+            // Code below is needed if you want image to switch dynamically on window.resize
+
+            // Find out if current images need to be changed
+            if(useLargeImages && realViewportWidth < 1000) {
+                useLargeImages = false;
+                imageSrcWillChange = true;
+            } else if(!useLargeImages && realViewportWidth >= 1000) {
+                useLargeImages = true;
+                imageSrcWillChange = true;
+            }
+
+            // Invalidate items only when source is changed and when it's not the first update
+            if(imageSrcWillChange && !firstResize) {
+                // invalidateCurrItems sets a flag on slides that are in DOM,
+                // which will force update of content (image) on window.resize.
+                gallery.invalidateCurrItems();
+            }
+
+            if(firstResize) {
+                firstResize = false;
+            }
+
+            imageSrcWillChange = false;
+
         });
         
         if (returnToUrl != '') {
