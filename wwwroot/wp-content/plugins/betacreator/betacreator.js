@@ -177,6 +177,21 @@ function removeBetaCreator() {
                   }
                 },
                 el(
+                  'input',
+                  {
+                    type: 'checkbox',
+                    id: 'showOverlay',
+                    checked: true
+                  }
+                ),
+                el(
+                  'label',
+                  {
+                    for: 'showOverlay'
+                  },
+                  'Show overlay'
+                ),
+                el(
                   'img',
                   {
                     className: 'beta-img-original',
@@ -215,6 +230,21 @@ function removeBetaCreator() {
             className: 'beta-img',
             "data-topo": props.attributes.topoData
           },
+          el(
+            'input',
+            {
+              type: 'checkbox',
+              id: 'showOverlay',
+              checked: true
+            }
+          ),
+          el(
+            'label',
+            {
+              for: 'showOverlay'
+            },
+            'Show overlay'
+          ),
           el(
             'img',
             {
