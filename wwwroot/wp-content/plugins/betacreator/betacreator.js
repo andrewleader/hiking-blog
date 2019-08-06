@@ -133,9 +133,14 @@ function removeBetaCreator() {
         	medium_large -> 1152x768
         	post-thumbnail -> (600x450)
         */
+        
+        var imgUrl = value.url;
+        if ("large" in value.sizes) {
+         imgUrl = value.sizes.large; 
+        }
 
         props.setAttributes({
-          imgUrl: value.sizes["large"].url,
+          imgUrl: imgUrl,
           imgId: value.id
         });
         showBetaCreator(value.url, undefined, onBetaCreatorSaved);
