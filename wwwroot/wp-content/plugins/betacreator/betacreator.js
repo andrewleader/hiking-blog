@@ -136,7 +136,7 @@ function removeBetaCreator() {
         
         var imgUrl = value.url;
         if ("large" in value.sizes) {
-         imgUrl = value.sizes.large; 
+         imgUrl = value.sizes.large.url; 
         }
 
         props.setAttributes({
