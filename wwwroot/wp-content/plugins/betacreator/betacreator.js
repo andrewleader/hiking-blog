@@ -210,7 +210,7 @@ function uuidv4() {
                   {
                     type: 'checkbox',
                     id: 'show-overlay-' + props.attributes.id,
-                    checked: true
+                    checked: ''
                   }
                 ),
                 el(
@@ -264,7 +264,7 @@ function uuidv4() {
             {
               type: 'checkbox',
               id: 'show-overlay-' + props.attributes.id,
-              checked: true
+              checked: ''
             }
           ),
           el(
