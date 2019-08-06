@@ -110,7 +110,7 @@ class LightboxPhotoSwipe
 
         wp_enqueue_script(
             'photoswipe-frontend',
-            plugin_dir_url(__FILE__) . 'js/frontend.min.js',
+            plugin_dir_url(__FILE__) . 'js/frontend.js',
             array('photoswipe-lib', 'photoswipe-ui-default', 'jquery'),
             self::LIGHTBOX_PHOTOSWIPE_VERSION
         );

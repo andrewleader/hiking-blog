@@ -1,8 +1,10 @@
 jQuery(function($) {
+    var selector = '.wp-block-image:has(img), .wp-block-gallery-item:has(img)';
+
     var PhotoSwipe = window.PhotoSwipe,
         PhotoSwipeUI_Default = window.PhotoSwipeUI_Default;
 
-    $('body').on('click', 'a[data-width]:has(img)', function(e) {
+    $('body').on('click', selector, function(e) {
         if( !PhotoSwipe || !PhotoSwipeUI_Default ) {
             return;
         }
@@ -12,7 +14,7 @@ jQuery(function($) {
     });
     
     var parseThumbnailElements = function(link) {
-        var elements = $('body').find('a[data-width]:has(img)'),
+        var elements = $('body').find(selector),
             galleryItems = [],
             index;
         
@@ -20,60 +22,20 @@ jQuery(function($) {
             var element = $(this);
             var caption = null;
 
-            caption = element.attr('data-caption');
-
-            if(caption == null) {
-                if(element.attr('data-caption-title') != null) {
-                    caption = '<div class="pswp__caption__title">'+element.attr('data-caption-title')+'</div>';
-                }
-
-                if(element.attr('data-caption-desc') != null) {
-                    if(caption == null) caption = '';
-                    caption = caption + '<div class="pswp__caption__desc">'+element.attr('data-caption-desc')+'</div>';
-                }
-            }
-
-            if(caption == null) {
-                describedby = element.children().first().attr('aria-describedby');
-                if(describedby != null ) {
-                    description = $('#'+describedby);
-                    if( description != null) caption = description.text();
-                } else {
-                    describedby = element.children().first().attr('figcaption');
-                    if(describedby != null ) {
-                        caption = element.next().text();
-                    }
-                }
-            }
-
-            if(caption == null) {
-                if( element.next().is('.wp-caption-text') ) {
-                    caption = element.next().text();
-                } else if( element.parent().next().is('.wp-caption-text') ) {
-                    caption = element.parent().next().text();
-                } else if( element.parent().next().is('.gallery-caption') ) {
-                    caption = element.parent().next().text();
-                } else if( element.next().is("figcaption") ) {
-                    caption = element.next().text();
-                } else if( element.parent().parent().next().is("figcaption") ) {
-                    caption = element.parent().parent().next().text();
-                } else {
-                    caption = element.attr('title');
-                }
-            }
+            caption = element.find('figcaption').text();
 
             if(caption == null && lbwps_options.use_alt == '1') {
-                caption = element.children().first().attr('alt');
+                caption = element.find('img').attr('alt');
             }
 
             galleryItems.push({
-                src: element.attr('href'),
+                src: element.attr('src'),
                 w: element.attr('data-width'),
                 h: element.attr('data-height'),
                 title: caption,
                 getThumbBoundsFn: false,
                 showHideOpacity: true,
-                el: element
+                el: element.find('img').get(0)
             });
             if( link === element.get(0) ) {
                 index = i;
