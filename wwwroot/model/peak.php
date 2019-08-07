@@ -33,22 +33,10 @@ class Peak extends PostEntity {
 			}
 			
 			foreach($this->getRoutes() as $route) {
-				foreach ($route->getPlans() as $routePlan) {
-					$this->addEntityIfNotExists($this->plans, $routePlan);
-				}
+				$this->addEntitiesIfNotExists($this->plans, $route->getPlans());
 			}
 		}
 		return $this->plans;
-	}
-	
-	private function addEntityIfNotExists($array, $entity) {
-		foreach ($array as $existing) {
-			if ($existing->post->ID == $entity->post->ID) {
-				return;
-			}
-		}
-		
-		$array[] = $entity;
 	}
 }
 	

@@ -32,6 +32,11 @@ $entity = PostEntity::get($post);
 	<div class="entry-container">
 		<div class="entry-content">
 			<?php
+				
+				if ($entity instanceof Plan) {
+					displayChildEntities("Report", $entity->getReports());
+				}
+				
 				the_content( sprintf(
 					/* translators: %s: Name of current post. */
 					wp_kses( __( 'Continue reading %s <span class="meta-nav">&rarr;</span>', 'blogslog' ), array( 'span' => array( 'class' => array() ) ) ),
@@ -42,6 +47,7 @@ $entity = PostEntity::get($post);
 					displayChildEntities("Routes", $entity->getRoutes());
 					displayChildEntities("Plans", $entity->getPlans());
 				} else if ($entity instanceof Route) {
+					displayChildEntities("Reports", $entity->getReports());
 					displayChildEntities("Plans", $entity->getPlans());
 				} else {
 					wp_link_pages( array(
