@@ -2,9 +2,12 @@
 	
 require_once('peak.php');
 require_once('route.php');
+require_once('fields.php');
+require_once('plans.php');
 
 abstract class PostEntity {
 	public $post;
+	private $fields;
 	
 	public function __construct($post) {
 		$this->post = $post;
@@ -30,6 +33,13 @@ abstract class PostEntity {
 		}
 	}
 	
+	public function getFields() {
+		if (!$this->fields) {
+			$this->fields = Fields::get($this->post);
+		}
+		return $this->fields;
+	}
+	
 	public static function get($post) {
 		switch ($post->post_type) {
 			case "peaks":
@@ -37,6 +47,9 @@ abstract class PostEntity {
 				
 			case "routes":
 				return new Route($post);
+				
+			case "plans":
+				return new Plan($post);
 				
 			default:
 				return null;

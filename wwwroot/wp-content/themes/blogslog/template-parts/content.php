@@ -9,16 +9,19 @@
  * @since BlogSlog 1.0.0
  */
  
- require_once('fields.php');
+require_once($_SERVER['DOCUMENT_ROOT'].'/model/postEntity.php');
+
+global $entity;
+$entity = PostEntity::get($post);
  
- $fields = Fields::get($post);
- 
- $title = $post->post_title;
- if (isset($fields->peakPost) && !$GLOBALS['displayingChild']) {
-     $title = $fields->peakPost->post_title . " - " . $title;
- }
- 
- $subtitle = $fields->createListSubtitle();
+$fields = $entity->getFields();
+
+$title = $post->post_title;
+if (isset($fields->peakPost) && !$GLOBALS['displayingChild']) {
+ $title = $fields->peakPost->post_title . " - " . $title;
+}
+
+$subtitle = $fields->createListSubtitle();
 ?>
 
 <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
@@ -48,32 +51,25 @@
             $includeMeta = true;
 
             // No meta for these
-            switch ($post->post_type) {
-                case "peaks":
-                case "routes":
-                    $includeMeta = false;
-                    break;
+            if ($entity instanceof Peak || $entity instanceof Route) {
+                $includeMeta = false;
             }
 
             if ($includeMeta) { ?>
 
                 <div class="entry-meta">
                     <?php
-
-                        switch ($post->post_type) {
-                            case "plans":
-                                $dateText = $fields->getDateString();
-                                ?>
-                                    <span class="posted-on">
-                                        <span class="screen-reader-text">Planned for</span>
-                                        <span><?php echo htmlspecialchars($dateText); ?></span>
-                                    </span>
-                                <?php
-                                break;
-
-                            default:
-                                blogslog_posted_on();
-                                break;
+                        
+                        if ($entity instanceof Plan) {
+                            $dateText = $fields->getDateString();
+                            ?>
+                                <span class="posted-on">
+                                    <span class="screen-reader-text">Planned for</span>
+                                    <span><?php echo htmlspecialchars($dateText); ?></span>
+                                </span>
+                            <?php
+                        } else {
+                            blogslog_posted_on();
                         }
 
                         echo blogslog_author();

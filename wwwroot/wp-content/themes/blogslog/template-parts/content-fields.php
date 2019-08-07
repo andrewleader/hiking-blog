@@ -9,12 +9,12 @@
  * @since BlogSlog 1.0.0
  */
  
- require_once('fields.php')
+ require_once($_SERVER['DOCUMENT_ROOT'].'/model/postEntity.php');
 ?>
 
 <?php
-	
-	$fields = Fields::get($post);
+	global $entity;
+	$fields = $entity->getFields();
 	
 	function echoLinksTable($table, $name, $className) {
 		if (count($table) > 0) { ?>

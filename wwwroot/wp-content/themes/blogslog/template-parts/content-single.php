@@ -13,6 +13,7 @@ $options = blogslog_get_theme_options();
 require_once('children.php');
 require_once($_SERVER['DOCUMENT_ROOT'].'/model/postEntity.php');
 
+global $entity;
 $entity = PostEntity::get($post);
 ?>
 
