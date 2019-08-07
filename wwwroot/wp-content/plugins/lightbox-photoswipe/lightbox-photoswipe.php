@@ -1,10 +1,10 @@
 <?php
 /*
-Plugin Name: Lightbox with PhotoSwipe
+Plugin Name: Lightbox with PhotoSwipe (Leader version)
 Plugin URI: https://wordpress.org/plugins/lightbox-photoswipe/
-Description: Lightbox with PhotoSwipe
-Version: 2.5
-Author: Arno Welzel
+Description: Lightbox with PhotoSwipe, altered for use by Andrew for my hiking site
+Version: 100
+Author: Arno Welzel, altered by Andrew Leader
 Author URI: http://arnowelzel.de
 Text Domain: lightbox-photoswipe
 */
