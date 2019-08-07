@@ -33,6 +33,26 @@ abstract class PostEntity {
 		}
 	}
 	
+	protected function getChildPostsWithManyRelationship($childPostType, $childField) {
+		$answer = get_posts(array(
+			'post_type' => $childPostType,
+			'numberposts' => 100,
+			'meta_query' => array(
+				array(
+					'key' => $childField,
+					'value' => $this->post->ID,
+					'compare' => 'LIKE'
+				)
+			)
+		));
+		
+		if ($answer) {
+			return $answer;
+		} else {
+			return array();
+		}
+	}
+	
 	public function getFields() {
 		if (!$this->fields) {
 			$this->fields = Fields::get($this->post);

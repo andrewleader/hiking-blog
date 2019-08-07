@@ -40,6 +40,9 @@ $entity = PostEntity::get($post);
 				
 				if ($entity instanceof Peak) {
 					displayChildEntities("Routes", $entity->getRoutes());
+					displayChildEntities("Plans", $entity->getPlans());
+				} else if ($entity instanceof Route) {
+					displayChildEntities("Plans", $entity->getPlans());
 				} else {
 					wp_link_pages( array(
 						'before' => '<div class="page-links">' . esc_html__( 'Pages:', 'blogslog' ),

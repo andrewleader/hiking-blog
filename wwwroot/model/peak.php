@@ -27,7 +27,28 @@ class Peak extends PostEntity {
 	public function getPlans() {
 		if (!$this->plans) {
 			$this->plans = array();
+		
+			foreach($this->getChildPostsWithManyRelationship('plans', 'destinations') as $planPost) {
+				$this->plans[] = new Plan($planPost);
+			}
+			
+			foreach($this->getRoutes() as $route) {
+				foreach ($route->getPlans() as $routePlan) {
+					$this->addEntityIfNotExists($this->plans, $routePlan);
+				}
+			}
 		}
+		return $this->plans;
+	}
+	
+	private function addEntityIfNotExists($array, $entity) {
+		foreach ($array as $existing) {
+			if ($existing->post->ID == $entity->post->ID) {
+				return;
+			}
+		}
+		
+		$array[] = $entity;
 	}
 }
 	
