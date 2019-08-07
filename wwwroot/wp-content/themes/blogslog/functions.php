@@ -72,10 +72,10 @@ if ( ! function_exists( 'blogslog_setup' ) ) :
 		) );
 
 		// Set up the WordPress core custom background feature.
-		add_theme_support( 'custom-background', apply_filters( 'blogslog_custom_background_args', array(
+		/*add_theme_support( 'custom-background', array(
 			'default-color' => 'ffffff',
 			'default-image' => '',
-		) ) );
+		) );*/
 
 		// This setup supports logo, site-title & site-description
 		add_theme_support( 'custom-logo', array(
