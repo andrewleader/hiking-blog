@@ -8,6 +8,8 @@
  * @subpackage BlogSlog
  * @since BlogSlog 1.0.0
  */
+ 
+require_once($_SERVER['DOCUMENT_ROOT'].'/model/postEntity.php');
 
 $options = blogslog_get_theme_options();
 
@@ -264,7 +266,11 @@ if ( ! function_exists( 'blogslog_header_image' ) ) :
 			return;
 		$header_image = get_header_image();
 		if ( is_singular() ) :
-			$header_image = has_post_thumbnail() ? get_the_post_thumbnail_url( get_the_id(), 'full' ) : $header_image;
+			$entity = PostEntity::get(get_post());
+			$entityThumbnail = $entity->getThumbnailUrl( 'full' );
+			if ($entityThumbnail) {
+				$header_image = $entityThumbnail;
+			}
 		endif;
 		?>
 

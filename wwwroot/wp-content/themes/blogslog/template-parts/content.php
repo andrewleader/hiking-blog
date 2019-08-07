@@ -22,12 +22,13 @@ if (isset($fields->peakPost) && !$GLOBALS['displayingChild']) {
 }
 
 $subtitle = $fields->createListSubtitle();
+$thumbnail = $entity->getThumbnailUrl( 'post-thumbnail' );
 ?>
 
 <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
 
-    <?php if ( has_post_thumbnail() ) : ?>
-        <div class="featured-image" style="background-image: url('<?php the_post_thumbnail_url( 'post-thumbnail' ) ?>');">
+    <?php if ( $thumbnail ) : ?>
+        <div class="featured-image" style="background-image: url('<?php echo esc_url($thumbnail) ?>');">
             <a href="<?php the_permalink(); ?>" class="post-thumbnail-link"></a>
         </div><!-- .featured-image -->
     <?php endif; ?>
