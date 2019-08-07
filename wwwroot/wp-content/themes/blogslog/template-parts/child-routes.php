@@ -9,25 +9,29 @@
 	// https://www.advancedcustomfields.com/resources/querying-relationship-fields/
 	$routes = get_posts(array(
 		'post_type' => 'routes',
+		'numberposts' => 20,
 		'meta_query' => array(
 			array(
 				'key' => 'peak',
-				'value' => '"' . get_the_ID() . '"',
-				'compare' => 'LIKE'
+				'value' => get_the_ID()
 			)
 		)
 	));
 ?>
 
+<h2>Routes</h2>
 <?php if ($routes): ?>
-	<h2>Routes</h2>
-	<ul>
-	<?php foreach( $routes as $route ): ?>
-		<li>
-			<a href="<?php echo get_permalink( $route->ID ); ?>">
-				<?php echo get_the_title( $route->ID ); ?>
-			</a>
-		</li>
-	<?php endforeach; ?>
-</ul>
+	<div class="archive-blog-wrapper blog-posts clear">
+	<?php
+	$originalPost = $post;
+	foreach( $routes as $route ) {
+		$post = $route;
+		get_template_part( 'template-parts/content', get_post_format($route) );
+	}
+	
+	$post = $originalPost;
+	?>
+	</div>
+<?php else: ?>
+<p>There are no routes for this peak. Add some!</p>
 <? endif ?>
