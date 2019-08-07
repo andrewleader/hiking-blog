@@ -1,6 +1,6 @@
 <?php
 /**
- * Template part for displaying posts.
+ * Template part for displaying posts. This is the single page full post.
  *
  * @link https://codex.wordpress.org/Template_Hierarchy
  *
@@ -32,10 +32,18 @@ $options = blogslog_get_theme_options();
 					the_title( '<span class="screen-reader-text">"', '"</span>', false )
 				) );
 
-				wp_link_pages( array(
-					'before' => '<div class="page-links">' . esc_html__( 'Pages:', 'blogslog' ),
-					'after'  => '</div>',
-				) );
+				switch ($post->post_type) {
+					case "peaks":
+						get_template_part('template-parts/child-routes');
+						break;
+
+					default:
+						wp_link_pages( array(
+							'before' => '<div class="page-links">' . esc_html__( 'Pages:', 'blogslog' ),
+							'after'  => '</div>',
+						) );
+						break;
+				}
 			?>
 		</div><!-- .entry-content -->
 	</div><!-- .entry-container -->
