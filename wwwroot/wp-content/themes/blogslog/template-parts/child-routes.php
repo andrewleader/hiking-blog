@@ -24,12 +24,14 @@
 	<div class="archive-blog-wrapper blog-posts clear">
 	<?php
 	$originalPost = $post;
+	$GLOBALS['displayingChild'] = true;
 	foreach( $routes as $route ) {
 		$post = $route;
-		get_template_part( 'template-parts/content', get_post_format($route) );
+		get_template_part( 'template-parts/content' );
 	}
 	
 	$post = $originalPost;
+	$GLOBALS['displayingChild'] = false;
 	?>
 	</div>
 <?php else: ?>

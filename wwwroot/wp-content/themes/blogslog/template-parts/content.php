@@ -14,7 +14,7 @@
  $fields = Fields::get($post);
  
  $title = $post->post_title;
- if (isset($fields->peakPost)) {
+ if (isset($fields->peakPost) && !$GLOBALS['displayingChild']) {
      $title = $fields->peakPost->post_title . " - " . $title;
  }
  
