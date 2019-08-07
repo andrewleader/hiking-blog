@@ -14,7 +14,7 @@
 
 <?php
 	
-	$fields = new Fields($post);
+	$fields = Fields::get($post);
 	
 	function echoLinksTable($table, $name, $className) {
 		if (count($table) > 0) { ?>
@@ -42,14 +42,19 @@
 	<?php } ?>
 </div>
 
+<?php
 
-<?php echoLinksTable($fields->weatherTable, "Weather forecasts", "weather"); ?>
+if ($fields instanceof Fields) {
+	echoLinksTable($fields->weatherTable, "Weather forecasts", "weather");
 
-<?php if (!$fields->caltopo->hasValue()) {
-	echoLinksTable($fields->mapsTable, "Maps", "maps");
-} else { ?>
-	<iframe width="100%" height="500px" src="<?php echo $fields->caltopoLink ?>"><?php echo $fields->caltopo->value ?></iframe>
-<?php if ($fields->gpx->hasValue()) {
-		echo $fields->gpx->value;
+	if (!$fields->caltopo->hasValue()) {
+		echoLinksTable($fields->mapsTable, "Maps", "maps");
+	} else { ?>
+		<iframe width="100%" height="500px" src="<?php echo $fields->caltopoLink ?>"><?php echo $fields->caltopo->value ?></iframe>
+	<?php if ($fields->gpx->hasValue()) {
+			echo $fields->gpx->value;
+		}
 	}
-} ?>
+}
+
+?>
