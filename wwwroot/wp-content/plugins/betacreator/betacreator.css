@@ -1,5 +1,6 @@
 .beta-img {
 	position: relative; /* So that child will position onto it */
+	margin-bottom: 1.5em; /* Standard spacing beneath a block */
 }
 
 .beta-img-topo {
