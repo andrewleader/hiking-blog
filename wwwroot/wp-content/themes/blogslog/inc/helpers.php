@@ -131,10 +131,18 @@ if ( ! function_exists( 'blogslog_post_pagination' ) ) :
 	 * @since BlogSlog 1.0.0
 	 */
 	function blogslog_post_pagination() {
-		the_post_navigation( array(
-			'prev_text'	=> blogslog_get_svg( array( 'icon' => 'left' ) ) .  '<span>%title</span>',
-            'next_text' => '<span>%title</span>' . blogslog_get_svg( array( 'icon' => 'right' ) ),
-		) );
+		switch ($post->post_type) {
+			case "peaks":
+				get_template_part('template-parts/child-routes');
+				break;
+
+			default:
+				the_post_navigation( array(
+					'prev_text'	=> blogslog_get_svg( array( 'icon' => 'left' ) ) .  '<span>%title</span>',
+					'next_text' => '<span>%title</span>' . blogslog_get_svg( array( 'icon' => 'right' ) ),
+				) );
+				break;
+		}
 	}
 endif;
 
