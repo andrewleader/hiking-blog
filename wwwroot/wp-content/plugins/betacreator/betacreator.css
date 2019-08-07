@@ -18,13 +18,8 @@
 	height: auto !important;
 }
 
-/* For back-compat, only hide topo if input is already there */
-.beta-img input ~ .beta-img-topo {
-	display: none;
-}
-
 .beta-img input:checked ~ .beta-img-topo {
-	display: unset;
+	display: none;
 }
 
 .beta-img input {

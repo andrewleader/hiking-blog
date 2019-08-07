@@ -41,8 +41,8 @@ jQuery(function($) {
                 var html = element.get(0).outerHTML;
                 // Make the ID unique for the full screen version so the label works
                 // Replace twice since it occurs twice
-                html = html.replace('show-overlay-', 'pswd-show-overlay');
-                html = html.replace('show-overlay-', 'pswd-show-overlay');
+                html = html.replace('hide-overlay-', 'pswd-hide-overlay');
+                html = html.replace('hide-overlay-', 'pswd-hide-overlay');
                 galleryItems.push({
                     html: html
                 });

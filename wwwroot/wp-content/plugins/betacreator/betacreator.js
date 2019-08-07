@@ -209,16 +209,15 @@ function uuidv4() {
                   'input',
                   {
                     type: 'checkbox',
-                    id: 'show-overlay-' + props.attributes.id,
-                    checked: true
+                    id: 'hide-overlay-' + props.attributes.id
                   }
                 ),
                 el(
                   'label',
                   {
-                    for: 'show-overlay-' + props.attributes.id
+                    for: 'hide-overlay-' + props.attributes.id
                   },
-                  'Show overlay'
+                  'Hide overlay'
                 ),
                 el(
                   'img',
@@ -263,16 +262,15 @@ function uuidv4() {
             'input',
             {
               type: 'checkbox',
-              id: 'show-overlay-' + props.attributes.id,
-              checked: true
+              id: 'hide-overlay-' + props.attributes.id
             }
           ),
           el(
             'label',
             {
-              for: 'show-overlay-' + props.attributes.id
+              for: 'hide-overlay-' + props.attributes.id
             },
-            'Show overlay'
+            'Hide overlay'
           ),
           el(
             'img',
