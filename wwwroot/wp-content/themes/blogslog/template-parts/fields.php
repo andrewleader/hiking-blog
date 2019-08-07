@@ -153,7 +153,7 @@
 
 		public static function get($post) {
 			switch ($post->post_type) {
-				case "trip_plan":
+				case "plans":
 				   return new FieldsForPlan($post);
 		   
 			   default:

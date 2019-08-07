@@ -61,7 +61,7 @@
                     <?php
 
                         switch ($post->post_type) {
-                            case "trip_plan":
+                            case "plans":
                                 $dateText = $fields->getDateString();
                                 ?>
                                     <span class="posted-on">
