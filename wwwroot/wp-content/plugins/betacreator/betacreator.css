@@ -46,6 +46,10 @@
 	font-size: 1rem;
 }
 
+.pswp .beta-img {
+	height: 100%; /* So it'll be centered */
+}
+
 .pswp .beta-img-topo,
 .pswp .beta-img-original {
 	max-height: unset;
