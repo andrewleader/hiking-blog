@@ -9,6 +9,11 @@
  * @since BlogSlog 1.0.0
  */
 $options = blogslog_get_theme_options();
+
+require_once('children.php');
+require_once($_SERVER['DOCUMENT_ROOT'].'/model/postEntity.php');
+
+$entity = PostEntity::get($post);
 ?>
 
 <article id="post-<?php the_ID(); ?>" <?php post_class( 'clear' ); ?>>
@@ -31,18 +36,14 @@ $options = blogslog_get_theme_options();
 					wp_kses( __( 'Continue reading %s <span class="meta-nav">&rarr;</span>', 'blogslog' ), array( 'span' => array( 'class' => array() ) ) ),
 					the_title( '<span class="screen-reader-text">"', '"</span>', false )
 				) );
-
-				switch ($post->post_type) {
-					case "peaks":
-						get_template_part('template-parts/child-routes');
-						break;
-
-					default:
-						wp_link_pages( array(
-							'before' => '<div class="page-links">' . esc_html__( 'Pages:', 'blogslog' ),
-							'after'  => '</div>',
-						) );
-						break;
+				
+				if ($entity instanceof Peak) {
+					displayChildEntities("Routes", $entity->getRoutes());
+				} else {
+					wp_link_pages( array(
+						'before' => '<div class="page-links">' . esc_html__( 'Pages:', 'blogslog' ),
+						'after'  => '</div>',
+					) );
 				}
 			?>
 		</div><!-- .entry-content -->
