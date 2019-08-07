@@ -16,9 +16,10 @@ $entity = PostEntity::get($post);
  
 $fields = $entity->getFields();
 
-$title = $post->post_title;
-if (isset($fields->peakPost) && !$GLOBALS['displayingChild']) {
- $title = $fields->peakPost->post_title . " - " . $title;
+if (!$GLOBALS['displayingChild']) {
+    $title = $entity->getListTitle();
+} else {
+    $title = $entity->getChildListTitle();
 }
 
 $subtitle = $fields->createListSubtitle();

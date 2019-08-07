@@ -128,6 +128,16 @@ abstract class PostEntity {
 		return get_the_post_thumbnail_url($this->post, $size);
 	}
 	
+	// Title for the list view
+	public function getListTitle() {
+		return $this->post->post_title;
+	}
+	
+	// Title for when displayed as a child of a parent
+	public function getChildListTitle() {
+		return $this->post->post_title;
+	}
+	
 	public static function get($post) {
 		switch ($post->post_type) {
 			case "peaks":

@@ -55,6 +55,15 @@ class Route extends PostEntity {
 		}
 		return false;
 	}
+	
+	// Title for the list view
+	public function getListTitle() {
+		$peak = $this->getPeak();
+		if ($peak) {
+			return $peak->post->post_title . ' - ' . $this->post->post_title;
+		}
+		return $this->post->post_title;
+	}
 }
 	
 ?>
