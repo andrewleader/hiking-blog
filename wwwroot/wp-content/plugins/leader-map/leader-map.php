@@ -38,39 +38,59 @@ function leadermap_handler($attrs, $content, $tag) {
     // tag -> the name of the shortcode, useful for shared callback functions
     // Must return a string of HTML
     
-    $routes = get_posts(array(
-			'post_type' => 'routes',
+    $peaks = get_posts(array(
+			'post_type' => 'peaks',
 			'numberposts' => 10000
 		));
         
     $jsData = array();
-    global $post;
-    $originalPost = $post;
-    foreach ($routes as $route) {
-        $route = new Route($route);
-        $fields = $route->getFields();
+    foreach ($peaks as $peak) {
+        $peak = new Peak($peak);
+        $fields = $peak->getFields();
         if ($fields->summit->hasValue()) {
-            $post = $route->post;
-            ob_start();
-            require $_SERVER['DOCUMENT_ROOT']."/wp-content/themes/blogslog/template-parts/content.php";
-            $htmlPreview = ob_get_clean();
+            $yds_class = 2;
+            $htmlPreview = "";
+            $childRoutes = $peak->getRoutes();
+            if (sizeof($childRoutes) > 0) {
+                foreach ($childRoutes as $child) {
+                    $childFields = $child->getFields();
+                    if ($childFields->yds_class->hasValue()) {
+                        $childYdsClass = intval($childFields->yds_class->value);
+                        if ($childYdsClass > $yds_class) {
+                            $yds_class = $childYdsClass;
+                        }
+                    }
+                    $htmlPreview .= getHtmlPreview($child->post);
+                }
+            } else {
+                $htmlPreview = getHtmlPreview($peak->post);
+            }
             $jsData[] = array(
-                'name' => $route->post->post_title,
+                'name' => $peak->post->post_title,
                 'position' => array(
                     'lat' => floatval($fields->summit->value['lat']),
                     'lng' => floatval($fields->summit->value['lng'])
                 ),
                 'htmlPreview' => $htmlPreview,
-                'yds_class' => $fields->yds_class->value
+                'yds_class' => $yds_class
             );
         }
     }
-    $post = $originalPost;
     
     $jsDataJson = json_encode($jsData);
 
     $answer = '<div id="leaderMap"></div><script>initLeaderMap('.$jsDataJson.');</script>';
     return $answer;
+}
+
+function getHtmlPreview($postItem) {
+    global $post;
+    $originalPost = $post;
+    $post = $postItem;
+    ob_start();
+    require $_SERVER['DOCUMENT_ROOT']."/wp-content/themes/blogslog/template-parts/content.php";
+    $htmlPreview = ob_get_clean();
+    return $htmlPreview;
 }
 
 add_action( 'init', 'leadermap_init' );

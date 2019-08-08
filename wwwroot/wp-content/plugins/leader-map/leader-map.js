@@ -14,6 +14,7 @@ function initLeaderMap(data) {
     var infoWindow = new google.maps.InfoWindow({
        content: '<p>Dynamic</p>'
     });
+    var markers = [];
     data.forEach((item) => {
         var icon;
         if (item.yds_class == 5) {
@@ -36,6 +37,7 @@ function initLeaderMap(data) {
             infoWindow.setContent(content);
             infoWindow.open(leaderMap, marker); 
         });
+        markers.push(marker);
     });
 }
 
