@@ -3,6 +3,8 @@
 Plugin Name: Leader Map
 */
 
+require_once($_SERVER['DOCUMENT_ROOT'].'/model/peak.php');
+
 function leadermap_init() {
     
     add_shortcode('leadermap', 'leadermap_handler');
@@ -35,8 +37,37 @@ function leadermap_handler($attrs, $content, $tag) {
     // content -> the enclosed content (available for enclosing shortcodes like [gist]5698283[/gist] only)
     // tag -> the name of the shortcode, useful for shared callback functions
     // Must return a string of HTML
+    
+    $peaks = get_posts(array(
+			'post_type' => 'peaks',
+			'numberposts' => 10000
+		));
+        
+    $jsData = array();
+    global $post;
+    $originalPost = $post;
+    foreach ($peaks as $peak) {
+        $peak = new Peak($peak);
+        if ($peak->getFields()->summit->hasValue()) {
+            $post = $peak->post;
+            ob_start();
+            require $_SERVER['DOCUMENT_ROOT']."/wp-content/themes/blogslog/template-parts/content.php";
+            $htmlPreview = ob_get_clean();
+            $jsData[] = array(
+                'name' => $peak->post->post_title,
+                'position' => array(
+                    'lat' => floatval($peak->getFields()->summit->value['lat']),
+                    'lng' => floatval($peak->getFields()->summit->value['lng'])
+                ),
+                'htmlPreview' => $htmlPreview
+            );
+        }
+    }
+    $post = $originalPost;
+    
+    $jsDataJson = json_encode($jsData);
 
-    $answer = '<div id="leaderMap"></div><script>initLeaderMap();</script>';
+    $answer = '<div id="leaderMap"></div><script>initLeaderMap('.$jsDataJson.');</script>';
     return $answer;
 }
 

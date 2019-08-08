@@ -3,3 +3,7 @@
 #leaderMap {
     height: 500px;
 }
+
+.infoWindowContent h1 {
+    fontSize: 1rem;
+}
