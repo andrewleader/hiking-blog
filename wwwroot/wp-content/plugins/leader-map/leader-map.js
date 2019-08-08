@@ -15,11 +15,21 @@ function initLeaderMap(data) {
        content: '<p>Dynamic</p>'
     });
     data.forEach((item) => {
+        var icon;
+        if (item.yds_class == 5) {
+            icon = 'http://maps.google.com/mapfiles/ms/icons/red-dot.png'; // Default red icon
+        } else if (item.yds_class == 4) {
+            icon = 'http://maps.google.com/mapfiles/ms/icons/orange-dot.png';
+        } else if (item.yds_class == 3) {
+            icon = 'http://maps.google.com/mapfiles/ms/icons/yellow-dot.png';
+        } else {
+            icon = 'http://maps.google.com/mapfiles/ms/icons/green-dot.png';
+        }
         var marker = new google.maps.Marker({
             position: item.position,
             map: leaderMap,
             title: item.name,
-            label: item.name[0]
+            icon: icon
         });
         marker.addListener('click', () => {
             var content = item.htmlPreview;

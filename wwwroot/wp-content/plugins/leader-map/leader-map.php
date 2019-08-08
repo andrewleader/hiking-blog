@@ -38,7 +38,7 @@ function leadermap_handler($attrs, $content, $tag) {
     // tag -> the name of the shortcode, useful for shared callback functions
     // Must return a string of HTML
     
-    $peaks = get_posts(array(
+    $routes = get_posts(array(
 			'post_type' => 'routes',
 			'numberposts' => 10000
 		));
@@ -46,20 +46,22 @@ function leadermap_handler($attrs, $content, $tag) {
     $jsData = array();
     global $post;
     $originalPost = $post;
-    foreach ($peaks as $peak) {
-        $peak = new Route($peak);
-        if ($peak->getFields()->summit->hasValue()) {
-            $post = $peak->post;
+    foreach ($routes as $route) {
+        $route = new Route($route);
+        $fields = $route->getFields();
+        if ($fields->summit->hasValue()) {
+            $post = $route->post;
             ob_start();
             require $_SERVER['DOCUMENT_ROOT']."/wp-content/themes/blogslog/template-parts/content.php";
             $htmlPreview = ob_get_clean();
             $jsData[] = array(
-                'name' => $peak->post->post_title,
+                'name' => $route->post->post_title,
                 'position' => array(
-                    'lat' => floatval($peak->getFields()->summit->value['lat']),
-                    'lng' => floatval($peak->getFields()->summit->value['lng'])
+                    'lat' => floatval($fields->summit->value['lat']),
+                    'lng' => floatval($fields->summit->value['lng'])
                 ),
-                'htmlPreview' => $htmlPreview
+                'htmlPreview' => $htmlPreview,
+                'yds_class' => $fields->yds_class->value
             );
         }
     }
