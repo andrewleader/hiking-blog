@@ -39,7 +39,7 @@ function leadermap_handler($attrs, $content, $tag) {
     // Must return a string of HTML
     
     $peaks = get_posts(array(
-			'post_type' => 'peaks',
+			'post_type' => 'routes',
 			'numberposts' => 10000
 		));
         
@@ -47,7 +47,7 @@ function leadermap_handler($attrs, $content, $tag) {
     global $post;
     $originalPost = $post;
     foreach ($peaks as $peak) {
-        $peak = new Peak($peak);
+        $peak = new Route($peak);
         if ($peak->getFields()->summit->hasValue()) {
             $post = $peak->post;
             ob_start();
