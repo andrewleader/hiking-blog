@@ -34,11 +34,24 @@ function initLeaderMap(data) {
         });
         marker.addListener('click', () => {
             var content = item.htmlPreview;
-            infoWindow.setContent(content);
-            infoWindow.open(leaderMap, marker); 
+            document.getElementById('leaderMapDetails').innerHTML = content;
+            window.scroll(0,findPos(document.getElementById("leaderMapDetails")) - 24);
+            //infoWindow.setContent(content);
+            //infoWindow.open(leaderMap, marker); 
         });
         markers.push(marker);
     });
+}
+
+//Finds y value of given object
+function findPos(obj) {
+    var curtop = 0;
+    if (obj.offsetParent) {
+        do {
+            curtop += obj.offsetTop;
+        } while (obj = obj.offsetParent);
+    return [curtop];
+    }
 }
 
 function escapeHTML(unsafe) {

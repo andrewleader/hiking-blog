@@ -79,7 +79,7 @@ function leadermap_handler($attrs, $content, $tag) {
     
     $jsDataJson = json_encode($jsData);
 
-    $answer = '<div id="leaderMap"></div><script>initLeaderMap('.$jsDataJson.');</script>';
+    $answer = '<div class="leader-map-container"><div id="leaderMap"></div><div id="leaderMapDetails" class="archive-blog-wrapper blog-posts clear">Select an item from the map to view it</div></div><script>initLeaderMap('.$jsDataJson.');</script>';
     return $answer;
 }
 

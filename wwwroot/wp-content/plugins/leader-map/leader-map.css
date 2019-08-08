@@ -17,3 +17,20 @@
     min-height: 100px;
     background-position: center;
 }
+
+#leaderMapDetails {
+    margin-top: 1rem;
+}
+
+/*.leader-map-container {
+    display: flex;
+}
+
+#leaderMap {
+    flex: 2;
+}
+
+#leaderMapDetails {
+    flex: 1;
+    padding-left: 1rem;
+}*/
