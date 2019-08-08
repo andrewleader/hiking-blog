@@ -5,6 +5,7 @@ require_once('route.php');
 require_once('fields.php');
 require_once('plan.php');
 require_once('report.php');
+require_once('pageOrPost.php');
 
 class CachedItem {
 	public $value;
@@ -151,6 +152,10 @@ abstract class PostEntity {
 				
 			case "reports":
 				return new Report($post);
+				
+			case "page":
+			case "post":
+				return new PageOrPost($post);
 				
 			default:
 				echo "Unknown type " . $post->post_type;

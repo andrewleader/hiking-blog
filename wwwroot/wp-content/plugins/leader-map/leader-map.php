@@ -2,9 +2,10 @@
 /*
 Plugin Name: Leader Map
 */
+
 function leadermap_init() {
     
-    add_sortcode('leadermap', 'leadermap_handler');
+    add_shortcode('leadermap', 'leadermap_handler');
     
     wp_enqueue_style(
         'leader-map-css',
@@ -22,7 +23,7 @@ function leadermap_init() {
     
     wp_enqueue_script(
         'leader-map-js-google',
-        'https://maps.googleapis.com/maps/api/js?key=AIzaSyAouPWaETNwNjBoDgzqp18lGcf-7AdZlMc&callback=initLeaderMap',
+        'https://maps.googleapis.com/maps/api/js?key=AIzaSyAouPWaETNwNjBoDgzqp18lGcf-7AdZlMc&callback=googleMapJsReady',
         array() // dependencies
     );
  
@@ -35,7 +36,7 @@ function leadermap_handler($attrs, $content, $tag) {
     // tag -> the name of the shortcode, useful for shared callback functions
     // Must return a string of HTML
 
-    $answer = '<div class="leaderMap"></div>';
+    $answer = '<div id="leaderMap"></div><script>initLeaderMap();</script>';
     return $answer;
 }
 
