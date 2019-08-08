@@ -2930,6 +2930,17 @@ object {
     background-size: cover;
     background-position: 50%;
 }
+
+#page-site-header.no-image {
+	padding: 0;
+	height: 300px;
+}
+
+#page-site-header.no-image .wrapper {
+	top: unset;
+	bottom: 0;
+}
+
 #page-site-header .wrapper {
     position: relative;
     text-align: center;

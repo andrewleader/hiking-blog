@@ -265,16 +265,18 @@ if ( ! function_exists( 'blogslog_header_image' ) ) :
 		if ( blogslog_is_frontpage() )
 			return;
 		$header_image = get_header_image();
+		$hasFeaturedImage = false;
 		if ( is_singular() ) :
 			$entity = PostEntity::get(get_post());
 			$entityThumbnail = $entity->getThumbnailUrl( 'full' );
 			if ($entityThumbnail) {
 				$header_image = $entityThumbnail;
+				$hasFeaturedImage = true;
 			}
 		endif;
 		?>
 
-		<div id="page-site-header" class="relative" style="background-image: url('<?php echo esc_url( $header_image ); ?>');">
+		<div id="page-site-header" class="relative <?php if (!$hasFeaturedImage) echo 'no-image'; ?>" style="background-image: url('<?php echo esc_url( $header_image ); ?>');">
             <div class="overlay"></div>
             <div class="wrapper">
                 <header class="page-header">
