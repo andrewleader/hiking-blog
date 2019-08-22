@@ -1,9 +1,9 @@
 === Microsoft Azure Storage for WordPress ===
-Contributors: 10up
+Contributors: msopentech, 10up, morganestes, stevegrunwell, lpawlik, rittesh.patel
 Tags: Microsoft, Microsoft Open Technologies, Microsoft Azure, Microsoft Azure Storage, Media Files, Upload, CDN, blob storage
 Requires at least: 4.0
-Tested up to: 4.9.2
-Stable tag: 4.1.1
+Tested up to: 4.9
+Stable tag: 4.1.0
 License: BSD 2-Clause
 License URI: http://www.opensource.org/licenses/bsd-license.php
 
@@ -11,7 +11,9 @@ Use the Microsoft Azure Storage service to host your website's media files.
 
 == Description ==
 
-This WordPress plugin allows you to use Microsoft Azure Storage Service to host your media and uploads for your WordPress powered website. Microsoft Azure Storage is an effective way to infinitely scale storage of your site and leverage Azure's global infrastructure.
+This WordPress plugin allows you to use Microsoft Azure Storage Service to host
+your media and uploads for your WordPress powered website. Microsoft Azure Storage is an effective way
+to infinitely scale storage of your site and leverage Azure's global infrastructure.
 
 For more details on Microsoft Azure Storage, please visit the <a href="https://azure.microsoft.com/en-us/services/storage/">Microsoft Azure website</a>.
 
@@ -22,9 +24,8 @@ For more details on Microsoft Azure Storage, please visit the <a href="https://a
 
 == Changelog ==
 
-= 4.1.1 =
-* Removed build tools from the plugin repository
-* Updated authors list
+= 4.2.0 =
+* Added ability to setup Azure settings using constants in wp-config.php file
 
 = 4.1.0 =
 * Added error message when SimpleXML library is not found
@@ -121,9 +122,15 @@ It is highly recommended that all users upgrade immediately.
 == Known Issues ==
 
 = Storage Account Versions =
-Storage accounts can be created via CLI, classic Azure portal, or the new Azure portal, with varying results.
+Storage accounts can be created via CLI, classic Azure portal, or the new Azure portal,
+with varying results.
 
-If a Storage account is created with the new Azure portal, authentication will fail, resulting in the inability to view/add containers or files. Creating a Storage account with the Azure CLI should allow the plugin to work with new Storage accounts.
+If a Storage account is created with the new Azure portal, authentication will fail,
+resulting in the inability to view/add containers or files. Creating a Storage account
+with the Azure CLI should allow the plugin to work with new Storage accounts.
 
 = Responsive Images in WordPress 4.4 =
-Images uploaded to the Azure Storage service will not automatically receive responsive versions. Images added through the WordPress Media Loader *should* get automatically converted to responsive images when inserted into a post or page. We are investigating options for full support of responsive images in the plugin.
+Images uploaded to the Azure Storage service will not automatically receive responsive versions.
+Images added through the WordPress Media Loader *should* get automatically converted to responsive
+images when inserted into a post or page.
+We are investigating options for full support of responsive images in the plugin.
