@@ -1010,9 +1010,6 @@ class Windows_Azure_Rest_Api_Client {
 			'timeout' => apply_filters( 'azure_blob_operation_timeout', self::API_REQUEST_TIMEOUT ),
 		) );
 
-		// Encode filename to support special characters
-		$path = urlencode( $path );
-
 		$endpoint_url = $this->_build_api_endpoint_url( $path );
 
 		if ( is_wp_error( $endpoint_url ) ) {
