@@ -35,9 +35,9 @@ function initLeaderMap(data) {
         marker.addListener('click', () => {
             var content = item.htmlPreview;
             document.getElementById('leaderMapDetails').innerHTML = content;
-            window.scroll(0,findPos(document.getElementById("leaderMapDetails")) - 24);
-            //infoWindow.setContent(content);
-            //infoWindow.open(leaderMap, marker); 
+            //window.scroll(0,findPos(document.getElementById("leaderMapDetails")) - 24);
+            infoWindow.setContent(content);
+            infoWindow.open(leaderMap, marker); 
         });
         markers.push(marker);
     });
