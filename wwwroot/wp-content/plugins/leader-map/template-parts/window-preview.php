@@ -36,7 +36,7 @@ if ($entity instanceof Route) {
 
 <article class="map-window-preview">
 
-    <h4 class="map-window-preview-title"><a target="_blank" href="<?php echo $link; ?>"><?php echo $title; ?></a></h2>
+    <h4 class="map-window-preview-title"><a target="_blank" href="<?php echo $link; ?>"><?php echo $title; ?></a></h4>
     
     <?php foreach ($routes as $route) : ?>
     

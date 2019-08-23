@@ -85,11 +85,9 @@ function leadermap_handler($attrs, $content, $tag) {
                             $yds_class = $childYdsClass;
                         }
                     }
-                    $htmlPreview .= getHtmlPreview($child->post);
                 }
-            } else {
-                $htmlPreview = getHtmlPreview($area->post);
             }
+            $htmlPreview = getHtml($area, 'details.php');
             $jsData[] = array(
                 'name' => $area->post->post_title,
                 'position' => array(
@@ -112,7 +110,7 @@ function leadermap_handler($attrs, $content, $tag) {
             if ($fields->yds_class->hasValue()) {
                 $yds_class = intval($fields->yds_class->value);
             }
-            $htmlPreview .= getHtmlPreview($route->post);
+            $htmlPreview .= getHtml($route, 'details.php');
             $jsData[] = array(
                 'name' => $route->getListTitle(),
                 'position' => array(
@@ -128,7 +126,7 @@ function leadermap_handler($attrs, $content, $tag) {
     
     $jsDataJson = json_encode($jsData);
 
-    $answer = '<div class="leader-map-container"><div id="leaderMap"></div><div id="leaderMapDetails" class="archive-blog-wrapper blog-posts clear">Select an item from the map to view it</div></div><script>initLeaderMap('.$jsDataJson.');</script>';
+    $answer = '<div class="leader-map-container"><div id="leaderMap"></div><div id="leaderMapDetails">Select an item from the map to view it</div></div><script>initLeaderMap('.$jsDataJson.');</script>';
     return $answer;
 }
 
