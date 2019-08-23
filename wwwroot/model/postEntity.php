@@ -1,6 +1,6 @@
 <?php
 	
-require_once('peak.php');
+require_once('area.php');
 require_once('route.php');
 require_once('fields.php');
 require_once('plan.php');
@@ -141,8 +141,8 @@ abstract class PostEntity {
 	
 	public static function get($post) {
 		switch ($post->post_type) {
-			case "peaks":
-				return new Peak($post);
+			case "areas":
+				return new Area($post);
 				
 			case "routes":
 				return new Route($post);

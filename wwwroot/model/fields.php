@@ -41,8 +41,8 @@
 	}
 	
 	class Fields extends BaseFields {
-		public $peak;
-		public $peakPost;
+		public $parent;
+		public $parentPost;
 		public $miles;
 		public $elevationGain;
 		public $highestElevation;
@@ -63,14 +63,14 @@
 		public $weatherTable;
 		
 		public function __construct($post) {
-			$this->peak = getMeta($post, "peak", "Peak");
-			if ($this->peak->hasValue()) {
-				$this->peakPost = get_post($this->peak->value);
-				$this->peak->value = '<a href="'.get_permalink($this->peakPost).'">'.$this->peakPost->post_title.'</a>';
+			$this->parent = getMeta($post, "parent", "Parent");
+			if ($this->parent->hasValue()) {
+				$this->parentPost = get_post($this->parent->value);
+				$this->parent->value = '<a href="'.get_permalink($this->parentPost).'">'.$this->parentPost->post_title.'</a>';
 			}
 			$this->miles = getMeta($post, "miles", "Miles");
 			$this->elevationGain = getMeta($post, "elevation_gain", "Elevation gain");
-			$this->highestElevation = getMeta($post, "highest_elevation", "Highest elevation", $this->peakPost);
+			$this->highestElevation = getMeta($post, "highest_elevation", "Highest elevation", $this->parentPost);
 			$this->yds_class = getMeta($post, "yds_class", "Class");
 			$this->yds_rating = getMeta($post, "yds_rating", "YDS rating");
 			if ($this->yds_rating->hasValue()) {
@@ -83,7 +83,7 @@
 			$this->pitches = getMeta($post, "pitches", "Pitches");
 			
 			$this->table = [
-				$this->peak,
+				$this->parent,
 				$this->miles,
 				$this->elevationGain,
 				$this->highestElevation
@@ -114,9 +114,9 @@
 			
 		  	$this->mapsTable = $this->cleanTable($this->mapsTable);
 			  
-			$this->summit = getMeta($post, "summit", "Summit", $this->peakPost);
+			$this->summit = getMeta($post, "summit", "Summit", $this->parentPost);
 			
-			$this->mountainForecast = getMeta($post, "mountain_forecast", "Mountain Forecast", $this->peakPost);
+			$this->mountainForecast = getMeta($post, "mountain_forecast", "Mountain Forecast", $this->parentPost);
 			$this->noaaForecast = new Meta("noaa_forecast", "NOAA Forecast", "");
 			if ($this->summit->hasValue()) {
 				$this->noaaForecast->value = "https://forecast.weather.gov/MapClick.php?lat=".trim($this->summit->value["lat"])."&lon=".trim($this->summit->value["lng"]);

@@ -2,7 +2,7 @@
 	
 require_once('postEntity.php');
 	
-class Peak extends PostEntity {
+class Area extends PostEntity {
 	private $routes; // Array of Route
 	private $plans;
 	
@@ -16,7 +16,7 @@ class Peak extends PostEntity {
 		if (!$this->routes) {
 			$this->routes = array();
 		
-			foreach($this->getChildPosts('routes', 'peak') as $routePost) {
+			foreach($this->getChildPosts('routes', 'parent') as $routePost) {
 				$this->routes[] = new Route($routePost);
 			}
 		}

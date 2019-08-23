@@ -3,7 +3,7 @@
 Plugin Name: Leader Map
 */
 
-require_once($_SERVER['DOCUMENT_ROOT'].'/model/peak.php');
+require_once($_SERVER['DOCUMENT_ROOT'].'/model/area.php');
 
 function leadermap_init() {
     
@@ -38,19 +38,19 @@ function leadermap_handler($attrs, $content, $tag) {
     // tag -> the name of the shortcode, useful for shared callback functions
     // Must return a string of HTML
     
-    $peaks = get_posts(array(
-			'post_type' => 'peaks',
+    $areas = get_posts(array(
+			'post_type' => 'areas',
 			'numberposts' => 10000
 		));
         
     $jsData = array();
-    foreach ($peaks as $peak) {
-        $peak = new Peak($peak);
-        $fields = $peak->getFields();
+    foreach ($areas as $area) {
+        $area = new Area($area);
+        $fields = $area->getFields();
         if ($fields->summit->hasValue()) {
             $yds_class = 2;
             $htmlPreview = "";
-            $childRoutes = $peak->getRoutes();
+            $childRoutes = $area->getRoutes();
             if (sizeof($childRoutes) > 0) {
                 foreach ($childRoutes as $child) {
                     $childFields = $child->getFields();
@@ -63,10 +63,10 @@ function leadermap_handler($attrs, $content, $tag) {
                     $htmlPreview .= getHtmlPreview($child->post);
                 }
             } else {
-                $htmlPreview = getHtmlPreview($peak->post);
+                $htmlPreview = getHtmlPreview($area->post);
             }
             $jsData[] = array(
-                'name' => $peak->post->post_title,
+                'name' => $area->post->post_title,
                 'position' => array(
                     'lat' => floatval($fields->summit->value['lat']),
                     'lng' => floatval($fields->summit->value['lng'])

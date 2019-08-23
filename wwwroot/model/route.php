@@ -5,7 +5,7 @@ require_once('postEntity.php');
 class Route extends PostEntity {
 	private $plans; // Array of Plan
 	private $reports; // Array of Report
-	private $peak; // CachedItem<Peak>
+	private $parent; // CachedItem<Area>
 	
 	public function __construct($post) {
 		parent::__construct($post);
@@ -37,11 +37,11 @@ class Route extends PostEntity {
 		return $this->reports;
 	}
 	
-	public function getPeak() {
-		if (!$this->peak) {
-			$this->peak = new CachedItem($this->getEntityFromField('peak'));
+	public function getArea() {
+		if (!$this->area) {
+			$this->area = new CachedItem($this->getEntityFromField('parent'));
 		}
-		return $this->peak->value;
+		return $this->area->value;
 	}
 	
 	public function getThumbnailUrlNoCache($size = 'post-thumbnail') {
@@ -49,18 +49,18 @@ class Route extends PostEntity {
 		if ($answer) {
 			return $answer;
 		}
-		$peak = $this->getPeak();
-		if ($peak) {
-			return $peak->getThumbnailUrl($size);
+		$area = $this->getArea();
+		if ($area) {
+			return $area->getThumbnailUrl($size);
 		}
 		return false;
 	}
 	
 	// Title for the list view
 	public function getListTitle() {
-		$peak = $this->getPeak();
-		if ($peak) {
-			return $peak->post->post_title . ' - ' . $this->post->post_title;
+		$area = $this->getArea();
+		if ($area) {
+			return $area->post->post_title . ' - ' . $this->post->post_title;
 		}
 		return $this->post->post_title;
 	}

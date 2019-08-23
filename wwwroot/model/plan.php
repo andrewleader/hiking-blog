@@ -1,7 +1,7 @@
 <?php
 	
 class Plan extends PostEntity {
-	private $destinations; // Array of Peak or Route
+	private $destinations; // Array of Area or Route
 	private $reports; // Array of Report
 	
 	public function __construct($post) {

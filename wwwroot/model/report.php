@@ -3,7 +3,7 @@
 require_once('postEntity.php');
 	
 class Report extends PostEntity {
-	private $destinations; // Array of Peak or Route
+	private $destinations; // Array of Area or Route
 	private $tripPlan; //CachedItem<Plan>
 	
 	public function __construct($post) {
