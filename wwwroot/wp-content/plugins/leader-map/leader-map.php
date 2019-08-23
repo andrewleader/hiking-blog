@@ -97,6 +97,7 @@ function leadermap_handler($attrs, $content, $tag) {
                     'lng' => floatval($fields->summit->value['lng'])
                 ),
                 'htmlPreview' => $htmlPreview,
+                'windowHtmlPreview' => getHtml($area, 'window-preview.php'),
                 'yds_class' => $yds_class
             );
         }
@@ -119,6 +120,7 @@ function leadermap_handler($attrs, $content, $tag) {
                     'lng' => floatval($fields->summit->value['lng'])
                 ),
                 'htmlPreview' => $htmlPreview,
+                'windowHtmlPreview' => getHtml($route, 'window-preview.php'),
                 'yds_class' => $yds_class
             );
         }
@@ -137,6 +139,18 @@ function getHtmlPreview($postItem) {
     ob_start();
     require $_SERVER['DOCUMENT_ROOT']."/wp-content/themes/blogslog/template-parts/content.php";
     $htmlPreview = ob_get_clean();
+    $post = $originalPost;
+    return $htmlPreview;
+}
+
+function getHtml($entityItem, $template) {
+    global $entity;
+    $originalEntity = $entity;
+    $entity = $entityItem;
+    ob_start();
+    require 'template-parts/'.$template;
+    $htmlPreview = ob_get_clean();
+    $entity = $originalEntity;
     return $htmlPreview;
 }
 

@@ -5,7 +5,7 @@
 }
 
 .infoWindowContent h1 {
-    fontSize: 1rem;
+    font-size: 1rem;
 }
 
 #leaderMap article {
@@ -34,3 +34,16 @@
     flex: 1;
     padding-left: 1rem;
 }*/
+
+.map-window-preview-title {
+    font-size: 1rem;
+}
+
+.map-window-preview,
+.map-window-preview-route-title {
+    font-size: 0.8rem;
+}
+
+.map-window-preview-route-title {
+    margin-bottom: 0;
+}
