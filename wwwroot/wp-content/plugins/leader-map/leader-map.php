@@ -4,6 +4,7 @@ Plugin Name: Leader Map
 */
 
 require_once($_SERVER['DOCUMENT_ROOT'].'/model/area.php');
+require_once($_SERVER['DOCUMENT_ROOT'].'/model/route.php');
 
 function leadermap_init() {
     
@@ -38,10 +39,34 @@ function leadermap_handler($attrs, $content, $tag) {
     // tag -> the name of the shortcode, useful for shared callback functions
     // Must return a string of HTML
     
+    // Meta filters: https://metabox.io/get-posts-by-custom-fields-in-wordpress/
     $areas = get_posts(array(
 			'post_type' => 'areas',
-			'numberposts' => 10000
-		));
+            'numberposts' => 10000,
+            'meta_query' => array(
+                array(
+                    'key' => 'summit',
+                    'value' => '',
+                    'compare' => '!='
+                )
+            )
+        ));
+        
+    $routesNotInArea = get_posts(array(
+        'post_type' => 'routes',
+        'numberposts' => 10000,
+        'meta_query' => array(
+            array(
+                'key' => 'summit',
+                'value' => '',
+                'compare' => '!='
+            ),
+            array(
+                'key' => 'parent',
+                'value' => NULL
+            )
+        )
+    ));
         
     $jsData = array();
     foreach ($areas as $area) {
@@ -67,6 +92,28 @@ function leadermap_handler($attrs, $content, $tag) {
             }
             $jsData[] = array(
                 'name' => $area->post->post_title,
+                'position' => array(
+                    'lat' => floatval($fields->summit->value['lat']),
+                    'lng' => floatval($fields->summit->value['lng'])
+                ),
+                'htmlPreview' => $htmlPreview,
+                'yds_class' => $yds_class
+            );
+        }
+    }
+    
+    foreach ($routesNotInArea as $route) {
+        $route = new Route($route);
+        $fields = $route->getFields();
+        if ($fields->summit->hasValue()) {
+            $yds_class = 2;
+            $htmlPreview = "";
+            if ($fields->yds_class->hasValue()) {
+                $yds_class = intval($fields->yds_class->value);
+            }
+            $htmlPreview .= getHtmlPreview($route->post);
+            $jsData[] = array(
+                'name' => $route->getListTitle(),
                 'position' => array(
                     'lat' => floatval($fields->summit->value['lat']),
                     'lng' => floatval($fields->summit->value['lng'])
