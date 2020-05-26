@@ -100,14 +100,14 @@ class Novo_Map_Admin {
      * register post admin menu specific js
      */
 	public function enqueue_post_admin_script() {
-        wp_enqueue_script( $this->plugin_name.'-gmap-api', 'https://maps.googleapis.com/maps/api/js?v=3.37&key=' . esc_attr(get_option($this->plugin_name.'_gmap_api_key')) . '', array(), null, false );
+        wp_enqueue_script( $this->plugin_name.'-gmap-api', 'https://maps.googleapis.com/maps/api/js?v=3.40&key=' . esc_attr(get_option($this->plugin_name.'_gmap_api_key')) . '', array(), null, false );
 	}
 
     /**
      * register post admin menu specific js
      */
     public function enqueue_main_admin_script() {
-        wp_enqueue_script( $this->plugin_name.'-gmap-api', 'https://maps.googleapis.com/maps/api/js?v=3.37&key=' . esc_attr(get_option($this->plugin_name.'_gmap_api_key')) . '', array(), null, false );
+        wp_enqueue_script( $this->plugin_name.'-gmap-api', 'https://maps.googleapis.com/maps/api/js?v=3.40&key=' . esc_attr(get_option($this->plugin_name.'_gmap_api_key')) . '', array(), null, false );
         wp_enqueue_script( $this->plugin_name.'-infobox', plugins_url( $this->plugin_name) .'/public/assets/js/infobox.js', array( $this->plugin_name.'-gmap-api' ) );
         wp_enqueue_script( $this->plugin_name.'-markerclusterer', plugins_url( $this->plugin_name) .'/public/assets/js/markerclusterer.js', array( $this->plugin_name.'-gmap-api' ) );
     }

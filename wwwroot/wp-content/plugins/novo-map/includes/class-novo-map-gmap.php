@@ -692,7 +692,7 @@ class Gmap {
      */
     public function enqueue_map($plugin_name) {
         // enqueue necessary stuff
-        wp_enqueue_script( $plugin_name.'-gmap-api', 'https://maps.googleapis.com/maps/api/js?v=3.37&key=' . esc_attr(get_option($plugin_name.'_gmap_api_key')) . '', array(), null, true );
+        wp_enqueue_script( $plugin_name.'-gmap-api', 'https://maps.googleapis.com/maps/api/js?v=3.40&key=' . esc_attr(get_option($plugin_name.'_gmap_api_key')) . '', array(), null, true );
         wp_enqueue_script( $plugin_name.'-infobox', plugins_url( $plugin_name) .'/public/assets/js/infobox.js', array( $plugin_name.'-gmap-api' ) );
         if($this->pin_clustering()) {
             wp_enqueue_script( $plugin_name.'-markerclusterer', plugins_url( $plugin_name) .'/public/assets/js/markerclusterer.js', array( $plugin_name.'-gmap-api' ) );

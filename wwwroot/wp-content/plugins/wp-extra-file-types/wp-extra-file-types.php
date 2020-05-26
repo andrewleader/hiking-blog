@@ -3,7 +3,7 @@
  * Plugin Name: WP Extra File Types
  * Description: Plugin to let you extend the list of allowed file types supported by the Wordpress Media Library.
  * Plugin URI: http://www.airaghi.net/en/2015/01/02/wordpress-custom-mime-types/
- * Version: 0.4.3
+ * Version: 0.4.4.1
  * Author: Davide Airaghi
  * Author URI: http://www.airaghi.net
  * License: GPLv2 or later
@@ -60,6 +60,7 @@ class WPEFT {
 		register_setting('wp-extra-file-types-page','wpeft_custom_types');
 		register_setting('wp-extra-file-types-page','wpeft_no_strict');
 		register_setting('wp-extra-file-types-page','wpeft_no_wp');
+        register_setting('wp-extra-file-types-page','wpeft_gf_hack');
 	}
 
 	public function admin() {
@@ -126,6 +127,11 @@ class WPEFT {
 			} else {
 				update_option('wpeft_no_wp',false);
 			}
+            if (isset($_POST['gf_hack']) && $_POST['gf_hack']) {
+                update_option('wpeft_gf_hack',true);
+            } else {
+                update_option('wpeft_gf_hack',false);
+            }
 		}
 		$selected = get_option('wpeft_types','');
 		if (!$selected) {
@@ -139,6 +145,7 @@ class WPEFT {
 		$nostrict = get_option('wpeft_no_strict',false);
 		$nowp = get_option('wpeft_no_wp',false);
 		$custom = get_option('wpeft_custom_types','');
+        $gf_hack = get_option('wpeft_gf_hack',false);
 		if (!$custom) {
 			$custom = array();
 		}		
@@ -204,6 +211,11 @@ class WPEFT {
 					<td valign="top"><?php echo $this->lang['TEXT_SKIP_WP'];?></td>
 					<td valign="top">&nbsp;</td>
 					<td valign="top"><input type="checkbox" name="no_wp" <?php if ($nowp) { echo 'checked="checked" '; } ?>> <?php echo $this->lang['TEXT_SKIP_WP_1'];?></td>
+				</tr>
+				<tr>
+					<td valign="top"><?php echo $this->lang['TEXT_GF_HACK'];?></td>
+					<td valign="top">&nbsp;</td>
+					<td valign="top"><input type="checkbox" name="gf_hack" <?php if ($gf_hack) { echo 'checked="checked" '; } ?>> <?php echo $this->lang['TEXT_GF_HACK_1'];?></td>
 				</tr>
 				<tr>
 				    <td colspan="3">
@@ -328,8 +340,8 @@ class WPEFT {
 		if (!$nowp) {
 		    // if the user want to use also WordPress internals (default case) ...
 		    if ($inwp || !$nostrict) {
-			// do nothing for WordPress file types or when we do not have to force anything ...
-			return $ret;
+			    // do nothing for WordPress file types or when we do not have to force anything ...
+			    return $ret;
 		    }
 		}
 		$usr = $this->_buildList();
@@ -340,7 +352,22 @@ class WPEFT {
 		}
 		return $ret;
 	}
-	
+
+    public function gf_hack($extensions)
+    {
+        $gf_hack = get_option('wpeft_gf_hack');
+        if (!$gf_hack) {
+            return $extensions;
+        }
+        $ok_list = $this->_buildList();
+        foreach ($extensions as $key => $ext) {
+            if ($ok_list && isset($ok_list[$ext])) {
+                unset($extensions[$key]);
+            }
+        }
+        return $extensions;
+    }
+    
 	protected function _inWP($ext) {
 		$ext    = strtolower($ext);
 		$wpmime = wp_get_mime_types();
@@ -371,7 +398,9 @@ class WPEFT {
 		} else {
 			$_optc = array();
 			foreach ($optc as $c) {
-				if (substr($c['extension'],0,1)=='.') { $c['extension'] = substr($c['extension'],1); }
+				if (substr($c['extension'],0,1)=='.') {
+                    $c['extension'] = substr($c['extension'],1);
+                }
 				$_optc[ $c['extension'] ] = $c['mime'];
 			}
 			$optc  = $_optc;
@@ -388,6 +417,8 @@ add_action('admin_menu', array($wpeft_obj,'admin'));
 add_filter('upload_mimes',array($wpeft_obj,'mime'));
 
 add_filter('wp_check_filetype_and_ext',array($wpeft_obj,'mime2'),10,4);
+
+add_filter('gform_disallowed_file_extensions',array($wpeft_obj,'gf_hack'));
 
 /* add_filter('upload_mimes','add_extra_mime_types');
 

@@ -2,8 +2,8 @@
 Contributors: davide.airaghi
 Tags: file type, upload, media library
 Requires at least: 4.0
-Tested up to: 5.1.1
-Stable tag: 0.4.3
+Tested up to: 5.3.2
+Stable tag: 0.4.4.1
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -21,6 +21,12 @@ supported by the Media Library upload procedure.
 3. Activate the plugin through the 'Plugins' menu in WordPress
 
 == Changelog ==
+
+= 0.4.4.1 =
+* user interface fix
+
+= 0.4.4 =
+* released experimental fix to have better integration with GravityForms
 
 = 0.4.3 =
 * fix on custom file types

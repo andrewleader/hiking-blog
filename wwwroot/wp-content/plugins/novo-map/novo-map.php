@@ -16,7 +16,7 @@
  * Plugin Name:       Novo-Map
  * Plugin URI:        https://wordpress.org/plugins/novo-map/
  * Description:       Display all your posts and pages on custom google maps
- * Version:           1.0.9
+ * Version:           1.0.10
  * Author:            novo-media
  * Author URI:        www.novo-media.ch
  * License:           GPL-2.0+
@@ -30,7 +30,7 @@ if ( ! defined( 'WPINC' ) ) {
 	die;
 }
 
-define( 'NOVO_MAP_VERSION', '1.0.9' );
+define( 'NOVO_MAP_VERSION', '1.0.10' );
 
 /**
  * The code that runs during plugin activation.

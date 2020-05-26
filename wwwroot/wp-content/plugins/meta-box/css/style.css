@@ -60,17 +60,20 @@
 }
 .rwmb-button.remove-clone {
 	text-decoration: none;
-	color: #fff;
-	background: #e74c3c;
-	border-radius: 50%;
+	color: #ccc;
 	display: inline-block;
 	position: absolute;
 	top: 0;
 	right: 0;
+	width: 20px;
+	height: 20px;
+	transition: color 200ms;
 }
 .rwmb-button.remove-clone .dashicons {
-	font-size: 14px;
-	line-height: 20px;
+	font-size: 20px;
+}
+.rwmb-button.remove-clone:hover {
+	color: #dc3232;
 }
 .remove-clone:focus {
 	outline: 0;
@@ -143,4 +146,12 @@ select.rwmb-error {
 }
 .rwmb-seamless .rwmb-clone {
 	background: none;
+}
+
+/* CSS fixes
+--------------------------------------------------------------*/
+/* Fix color picker field is hidden by the post editor at after_title position. https://metabox.io/support/topic/bug-color-picker-field-is-showed-below-the-title-field/ */
+.postarea {
+	position: relative;
+	z-index: 0;
 }

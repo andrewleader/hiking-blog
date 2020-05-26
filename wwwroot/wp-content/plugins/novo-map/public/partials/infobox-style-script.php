@@ -19,13 +19,12 @@ google.maps.event.addListener(marker<?php echo esc_js($marker->id()) ?>, 'click'
     prevInfobox = infobox<?php echo esc_js($marker->id()) ?>
 
     //responsive pixeloffset to work with max-width: 90% in css
-    var mapWidth = document.getElementById(this.map.getDiv().id).offsetWidth;
+    var mapWidth = <?php echo esc_js( $gmap_name ) ?>.getDiv().children[0].offsetWidth;
     if(mapWidth <= <?php echo esc_js($this->width()) ?>*1.1) {
         infobox<?php echo esc_js($marker->id()) ?>.setOptions({'pixelOffset':new google.maps.Size((-mapWidth/2)*0.9, -<?php echo esc_js($this->height()) ?>/2)});
     }
-
     <?php echo esc_js( $gmap_name ) ?>.setCenter(marker<?php echo esc_js($marker->id()) ?>.getPosition());
 });
-google.maps.event.addListener(<?php echo esc_js( $gmap_name ) ?>, "click", function(e) {
+google.maps.event.addListener(<?php echo esc_js( $gmap_name ) ?>, 'click', function(e) {
     infobox<?php echo esc_js($marker->id()) ?>.close();
 });
