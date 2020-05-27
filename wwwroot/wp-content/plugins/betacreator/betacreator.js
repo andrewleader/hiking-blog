@@ -155,7 +155,7 @@ function uuidv4() {
         props.setAttributes({
           imgUrl: imgUrl,
           imgId: value.id,
-          id: props.id || uuidv4()
+          id: props.id || ('hide-overlay-' + uuidv4())
         });
         showBetaCreator(value.url, undefined, onBetaCreatorSaved);
         return true;
@@ -179,7 +179,7 @@ function uuidv4() {
            type: 'button',
            onClick: () => {
              props.setAttributes({
-               id: uuidv4()
+               id: 'hide-overlay-' + uuidv4()
              });
            }
          },
@@ -209,13 +209,13 @@ function uuidv4() {
                   'input',
                   {
                     type: 'checkbox',
-                    id: 'hide-overlay-' + props.attributes.id
+                    id: props.attributes.id
                   }
                 ),
                 el(
                   'label',
                   {
-                    for: 'hide-overlay-' + props.attributes.id
+                    for: props.attributes.id
                   },
                   'Hide overlay'
                 ),
@@ -262,13 +262,13 @@ function uuidv4() {
             'input',
             {
               type: 'checkbox',
-              id: 'hide-overlay-' + props.attributes.id
+              id: props.attributes.id
             }
           ),
           el(
             'label',
             {
-              for: 'hide-overlay-' + props.attributes.id
+              for: props.attributes.id
             },
             'Hide overlay'
           ),
