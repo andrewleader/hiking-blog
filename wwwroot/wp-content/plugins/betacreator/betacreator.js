@@ -38,7 +38,7 @@ function showBetaCreator(imgUrl, topoData, onSave) {
         // Settings
         zoom: 'contain',
         width: '100%',
-        height: '100%',
+        height: '700px',
         scaleFactor: width / 700
       });
   };
