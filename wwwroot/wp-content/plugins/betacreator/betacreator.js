@@ -6,6 +6,7 @@ function showBetaCreator(imgUrl, topoData, onSave) {
   removeBetaCreator();
   
   var container = document.createElement('div');
+  container.className = 'beta-dialog';
   var buttonSave = document.createElement('button');
   var creator;
   buttonSave.innerText = 'Save';
@@ -37,7 +38,7 @@ function showBetaCreator(imgUrl, topoData, onSave) {
         // Settings
         zoom: 'contain',
         width: '100%',
-        height: '500px',
+        height: '100%',
         scaleFactor: width / 700
       });
   };
