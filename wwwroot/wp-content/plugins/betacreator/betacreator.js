@@ -157,7 +157,7 @@ function uuidv4() {
           imgId: value.id,
           id: props.id || ('hide-overlay-' + uuidv4())
         });
-        showBetaCreator(value.url, undefined, onBetaCreatorSaved);
+        showBetaCreator(imgUrl, undefined, onBetaCreatorSaved);
         return true;
       }
       
