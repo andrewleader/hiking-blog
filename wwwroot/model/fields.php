@@ -155,6 +155,9 @@
 			switch ($post->post_type) {
 				case "plans":
 				   return new FieldsForPlan($post);
+				   
+			   case "reports":
+			   		return new FieldsForReport($post);
 		   
 			   default:
 				   return new Fields($post);
@@ -189,6 +192,41 @@
 		public function createListSubtitle() {
 			// We don't need a subtitle for these
 			return "";
+		}
+
+		public function getDateString() {
+			// This is used for displaying in the list view
+			if ($this->startDate->hasValue()) {
+				if ($this->endDate->hasValue()) {
+					return $this->formatDate($this->startDate->value) . " to " . $this->formatDate($this->endDate->value);
+				}
+				return $this->formatDate($this->startDate->value);
+			} else {
+				return "No date";
+			}
+		}
+
+		private function formatDate($date) {
+			return date("F j, Y", strtotime($date)); // July 30, 2019
+		}
+	}
+	
+	class FieldsForReport extends BaseFields {
+		public $startDate;
+        public $endDate;
+
+        public $table;
+		
+		public function __construct($post) {
+            $this->startDate = getMeta($post, "start_date", "Start date");
+            $this->endDate = getMeta($post, "end_date", "End date");
+			
+			$this->table = [
+				$this->startDate,
+				$this->endDate
+			];
+			
+			$this->table = $this->cleanTable($this->table);
 		}
 
 		public function getDateString() {

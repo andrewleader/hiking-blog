@@ -70,6 +70,13 @@ $thumbnail = $entity->getThumbnailUrl( 'post-thumbnail' );
                                     <span><?php echo htmlspecialchars($dateText); ?></span>
                                 </span>
                             <?php
+                        } else if ($entity instanceof Report) {
+                            $dateText = $fields->getDateString();
+                            ?>
+                                <span class="posted-on">
+                                    <span><?php echo htmlspecialchars($dateText); ?></span>
+                                </span>
+                            <?php
                         } else {
                             blogslog_posted_on();
                         }
