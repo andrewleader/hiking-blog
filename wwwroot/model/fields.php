@@ -229,6 +229,11 @@
 			$this->table = $this->cleanTable($this->table);
 		}
 
+		public function createListSubtitle() {
+			// We don't need a subtitle for these
+			return "";
+		}
+
 		public function getDateString() {
 			// This is used for displaying in the list view
 			if ($this->startDate->hasValue()) {
