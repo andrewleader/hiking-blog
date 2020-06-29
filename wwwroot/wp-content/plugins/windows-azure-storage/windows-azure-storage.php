@@ -593,7 +593,10 @@ function windows_azure_storage_wp_handle_upload_prefilter( $file ) {
 
 	$blob_name = \Windows_Azure_Helper::get_unique_blob_name( $container, $blob_name );
 
-	$file['name'] = basename( $blob_name );
+	// Added by aleader: Ensure name is unique
+	$pathinfo = pathinfo($blob_name);
+	$file['name'] = $pathinfo['filename'] . '.' . base64_encode(openssl_random_pseudo_bytes(6)) . '.' . $pathinfo['extension'];
+	// $file['name'] = basename( $blob_name );
 
 	return $file;
 }
